@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<section style="display:block;">
+<section id="landing-section" style="display:block;">
   <style>
 /* ── RESET ────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -527,6 +527,11 @@ footer{background:#000;border-top:1px solid var(--border);padding:5rem 5% 2.5rem
         <label for="f-email">Email Address</label>
         <input type="email" id="f-email" placeholder="your@email.com" required>
       </div>
+      <div class="fg">
+  <label for="f-password">Password</label>
+  <input type="password" id="f-password" placeholder="Min 6 characters" required>
+</div>
+
       <div class="form-row">
         <div class="fg">
           <label for="f-gender">Gender</label>
@@ -708,162 +713,6 @@ footer{background:#000;border-top:1px solid var(--border);padding:5rem 5% 2.5rem
 
 </footer>
 
-<script>
-/* ── LOADER ────────────────────────────────────────── */
-window.addEventListener('load',()=>{
-  setTimeout(()=>document.getElementById('loader').classList.add('done'),1500)
-})
-
-/* ── CURSOR ────────────────────────────────────────── */
-const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring')
-let mx=0,my=0,rx=0,ry=0
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY
-  dot.style.left=mx+'px';dot.style.top=my+'px'
-})
-;(function animRing(){
-  rx+=(mx-rx)*.11;ry+=(my-ry)*.11
-  ring.style.left=rx+'px';ring.style.top=ry+'px'
-  requestAnimationFrame(animRing)
-})()
-document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-grow'))
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-grow'))
-})
-
-/* ── NAV SCROLL ────────────────────────────────────── */
-window.addEventListener('scroll',()=>{
-  document.getElementById('nav').classList.toggle('scrolled',scrollY>60)
-})
-
-/* ── MOBILE MENU ───────────────────────────────────── */
-function toggleMob(){
-  const open=document.getElementById('mobMenu').classList.toggle('open')
-  document.getElementById('hamBtn').classList.toggle('open',open)
-}
-function closeMob(){
-  document.getElementById('mobMenu').classList.remove('open')
-  document.getElementById('hamBtn').classList.remove('open')
-}
-
-/* ── TYPEWRITER ────────────────────────────────────── */
-const words=['Students.','Educators.','Researchers.','Dreamers.','The Next Generation.']
-let wi=0,ci=0,del=false
-const twEl=document.getElementById('twEl')
-function tw(){
-  if(!twEl)return
-  const w=words[wi]
-  if(!del){
-    twEl.textContent=w.slice(0,++ci)
-    if(ci===w.length){del=true;setTimeout(tw,1900);return}
-    setTimeout(tw,85)
-  }else{
-    twEl.textContent=w.slice(0,--ci)
-    if(ci===0){del=false;wi=(wi+1)%words.length;setTimeout(tw,420);return}
-    setTimeout(tw,42)
-  }
-}
-setTimeout(tw,3100)
-
-/* ── SCROLL REVEAL ─────────────────────────────────── */
-const ro=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const siblings=Array.from(e.target.parentElement.children)
-      const i=siblings.indexOf(e.target)
-      e.target.style.transitionDelay=(i*0.07)+'s'
-      e.target.classList.add('vis')
-      ro.unobserve(e.target)
-    }
-  })
-},{threshold:.1})
-document.querySelectorAll('.reveal').forEach(el=>ro.observe(el))
-
-/* ── COUNTER ───────────────────────────────────────── */
-const co=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(!e.isIntersecting)return
-    const el=e.target
-    const target=parseInt(el.dataset.count)
-    const suffix=el.dataset.suffix||'+'
-    let n=0,step=Math.ceil(target/70)
-    const t=setInterval(()=>{
-      n+=step
-      if(n>=target){n=target;clearInterval(t)}
-      if(target>=10000){el.textContent=Math.floor(n/1000)+'K'+suffix}
-      else{el.textContent=n+suffix}
-    },28)
-    co.unobserve(el)
-  })
-},{threshold:.5})
-document.querySelectorAll('.stat-n').forEach(el=>co.observe(el))
-
-/* ── FAQ ───────────────────────────────────────────── */
-function toggleFAQ(btn){
-  const item=btn.closest('.faq-item')
-  const was=item.classList.contains('open')
-  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'))
-  if(!was)item.classList.add('open')
-}
-
-/* ── FORM SUBMIT ───────────────────────────────────── */
-function handleSignup(e){
-  e.preventDefault()
-  const btn=document.getElementById('submitBtn')
-  btn.textContent='Creating account...'
-  btn.disabled=true
-  setTimeout(()=>{
-    btn.textContent='✓ Welcome to CollegeTrends!'
-    btn.style.background='#fff'
-  },1700)
-}
-
-/* ── MAGNETIC BTNS ─────────────────────────────────── */
-document.querySelectorAll('.btn-white,.btn-submit,.nav-cta').forEach(b=>{
-  b.addEventListener('mousemove',e=>{
-    const r=b.getBoundingClientRect()
-    const x=e.clientX-r.left-r.width/2
-    const y=e.clientY-r.top-r.height/2
-    b.style.transform=`translate(${x*.14}px,${y*.14}px) translateY(-3px)`
-  })
-  b.addEventListener('mouseleave',()=>{b.style.transform=''})
-})
-/* ── SIGNIN MODAL ──────────────────────────────────── */
-function openSignin(){
-  document.getElementById('signinModal').classList.add('open')
-  document.body.style.overflow='hidden'
-  setTimeout(()=>document.getElementById('si-email').focus(),100)
-}
-function closeSignin(){
-  document.getElementById('signinModal').classList.remove('open')
-  document.body.style.overflow=''
-}
-function closeSigninOutside(e){
-  if(e.target===document.getElementById('signinModal'))closeSignin()
-}
-function handleSignin(e){
-  e.preventDefault()
-  const btn=document.getElementById('signinBtn')
-  btn.textContent='Signing in...'
-  btn.disabled=true
-  setTimeout(()=>{
-    btn.textContent='✓ Welcome Back!'
-    setTimeout(()=>{
-      closeSignin()
-      btn.textContent='Sign In →'
-      btn.disabled=false
-      e.target.reset()
-    },800)
-  },1500)
-}
-// Close on Escape key
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'&&document.getElementById('signinModal').classList.contains('open')){
-    closeSignin()
-  }
-})
-
-</script>
 
 </section>
 <style>
@@ -2107,928 +1956,421 @@ textarea{
 
 <script>
 // ==================== CONFIGURATION ====================
-const API_BASE = ''; // Same origin
-const POLLING = {
-  notifications: 5 * 60 * 1000, // 5 minutes
-  messages: {
-    base: 30000, // 30 seconds
-    current: 30000,
-    max: 300000 // 5 minutes
-  }
-};
+const API_BASE = 'https://collegetrends-server.onrender.com'; // CHANGE THIS TO YOUR BACKEND URL
 
-// ==================== STATE ====================
-let currentUser = null;
-let currentPage = 'home';
-let posts = [];
-let conversations = [];
-let notifications = [];
-let currentTags = [];
-let messageIntervalId = null;
-let activeChatId = null;
-let lastMessageCount = 0;
+// ==================== VIEW SWITCHING ====================
+function showApp() {
+    document.getElementById('landing-section') ? document.getElementById('landing-section').style.display = 'none' : document.querySelector('section').style.display = 'none';
 
-// ==================== INITIALIZATION ====================
-document.addEventListener('DOMContentLoaded', () => {
-  checkAuth();
-  setupPolling();
-});
-
-function checkAuth() {
-  const token = localStorage.getItem('ct_token');
-  if (!token) {
-    // Redirect to landing page (which should handle login)
-    window.location.href = 'index.html';
-    return;
-  }
-  // Validate token and load user
-  fetchUserData();
+    document.getElementById('app').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    document.getElementById('loadingScreen').classList.remove('hidden');
+    loadAppData();
 }
 
-async function fetchUserData() {
-  try {
-    const res = await fetch('/api/me', {
-      headers: {'Authorization': 'Bearer ' + localStorage.getItem('ct_token')}
-    });
-    if (!res.ok) throw new Error('Auth failed');
-    currentUser = await res.json();
-    document.getElementById('drawerUsername').textContent = '@' + currentUser.username;
-    document.getElementById('loadingScreen').classList.add('hidden');
-    loadFeed();
-    loadConversations();
-    loadNotifications();
-  } catch (err) {
-    logout();
-  }
+function showLanding() {
+    document.querySelector('section').style.display = 'block';
+    document.getElementById('app').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// ==================== AUTHENTICATION ====================
+async function handleSignup(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'Creating account...';
+    btn.disabled = true;
+    
+    const data = {
+        username: document.getElementById('f-username').value,
+        full_name: document.getElementById('f-fullname').value,
+        email: document.getElementById('f-email').value,
+        password: document.getElementById('f-password') ? document.getElementById('f-password').value : 'password123',
+        university: document.getElementById('f-uni').value,
+        course: document.getElementById('f-course').value
+    };
+    
+    try {
+        const res = await fetch(`${API_BASE}/api/register`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        });
+        
+        const result = await res.json();
+        if (result.token) {
+            localStorage.setItem('ct_token', result.token);
+            btn.textContent = '✓ Success!';
+            setTimeout(showApp, 500);
+        } else {
+            alert(result.error || 'Registration failed');
+            btn.textContent = 'Create My Account →';
+            btn.disabled = false;
+        }
+    } catch (err) {
+        alert('Network error. Backend not running?');
+        btn.textContent = 'Create My Account →';
+        btn.disabled = false;
+    }
+}
+
+async function handleSignin(e) {
+    e.preventDefault();
+    const btn = document.getElementById('signinBtn');
+    btn.textContent = 'Signing in...';
+    
+    const email = document.getElementById('si-email').value;
+    const password = document.getElementById('si-password').value;
+    
+    try {
+        const res = await fetch(`${API_BASE}/api/login`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({username: email, password: password})
+        });
+        
+        const result = await res.json();
+        if (result.token) {
+            localStorage.setItem('ct_token', result.token);
+            btn.textContent = '✓ Welcome Back!';
+            setTimeout(() => {
+                closeSignin();
+                showApp();
+            }, 500);
+        } else {
+            alert('Invalid credentials');
+            btn.textContent = 'Sign In →';
+        }
+    } catch (err) {
+        alert('Login failed. Check backend connection.');
+        btn.textContent = 'Sign In →';
+    }
+}
+
+function logout() {
+    localStorage.removeItem('ct_token');
+    showLanding();
+}
+
+// ==================== APP DATA LOADING ====================
+let currentUser = null;
+
+async function loadAppData() {
+    const token = localStorage.getItem('ct_token');
+    if (!token) {
+        showLanding();
+        return;
+    }
+    
+    try {
+        const res = await fetch(`${API_BASE}/api/me`, {
+            headers: {'Authorization': 'Bearer ' + token}
+        });
+        
+        if (!res.ok) throw new Error('Auth failed');
+        currentUser = await res.json();
+        document.getElementById('drawerUsername').textContent = '@' + currentUser.username;
+        document.getElementById('loadingScreen').classList.add('hidden');
+        
+        loadFeed();
+        loadConversations();
+        loadNotifications();
+    } catch (err) {
+        localStorage.removeItem('ct_token');
+        showLanding();
+    }
 }
 
 // ==================== NAVIGATION ====================
 function navigateTo(page) {
-  // Hide all pages
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  
-  // Show target page
-  const target = document.getElementById('page-' + page);
-  if (target) {
-    target.classList.add('active');
-    currentPage = page;
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
     
-    // Update nav
-    const navItem = document.querySelector(`.nav-item[data-page="${page}"]`);
-    if (navItem) navItem.classList.add('active');
-    
-    // Page specific logic
-    if (page === 'profile') loadProfile();
-    if (page === 'chats' && activeChatId) navigateTo('chat'); // Return to chat list
-  }
-  
-  window.scrollTo(0,0);
+    const target = document.getElementById('page-' + page);
+    if (target) {
+        target.classList.add('active');
+        const navItem = document.querySelector(`.nav-item[data-page="${page}"]`);
+        if (navItem) navItem.classList.add('active');
+        if (page === 'profile') loadProfile();
+    }
 }
 
 function toggleDrawer() {
-  document.getElementById('drawer').classList.toggle('open');
-  document.getElementById('drawerOverlay').classList.toggle('open');
+    document.getElementById('drawer').classList.toggle('open');
+    document.getElementById('drawerOverlay').classList.toggle('open');
 }
 
-// ==================== FEED ALGORITHM ====================
+// ==================== FEED ====================
 async function loadFeed() {
-  const container = document.getElementById('feedContainer');
-  container.innerHTML = '<div class="skeleton-post"><div class="skeleton skeleton-media" style="height:400px;"></div></div>';
-  
-  try {
-    const res = await fetch('/api/feed', {
-      headers: {'Authorization': 'Bearer ' + localStorage.getItem('ct_token')}
-    });
-    posts = await res.json();
+    const container = document.getElementById('feedContainer');
+    container.innerHTML = '<div style="padding:40px;text-align:center;">Loading...</div>';
     
-    // Algorithm: Popularity + Randomness + Similarity
-    posts.sort((a, b) => {
-      const scoreA = calculateFeedScore(a);
-      const scoreB = calculateFeedScore(b);
-      return scoreB - scoreA;
-    });
+    try {
+        const res = await fetch(`${API_BASE}/api/feed`, {
+            headers: {'Authorization': 'Bearer ' + localStorage.getItem('ct_token')}
+        });
+        const posts = await res.json();
+        renderFeed(posts);
+    } catch (err) {
+        container.innerHTML = '<div style="padding:40px;text-align:center;color:red;">Failed to load feed</div>';
+    }
+}
+
+function renderFeed(posts) {
+    const container = document.getElementById('feedContainer');
+    if (!posts || posts.length === 0) {
+        container.innerHTML = '<div style="padding:40px;text-align:center;color:var(--text-secondary);">No posts yet. Create one!</div>';
+        return;
+    }
     
-    renderFeed();
-    loadSuggestions();
-  } catch (err) {
-    container.innerHTML = '<div class="empty-state">Failed to load feed</div>';
-  }
-}
-
-function calculateFeedScore(post) {
-  const hours = (Date.now() - new Date(post.created_at)) / 3600000;
-  const engagement = (post.likes_count || 0) + ((post.comments_count || 0) * 2) + ((post.upvotes_count || 0) * 3);
-  const recency = Math.max(0, 24 - hours) / 24;
-  const random = Math.random() * 0.15; // 15% randomness
-  const similarity = post.course_id === currentUser.course_id ? 0.3 : 0.1; // Course similarity
-  
-  return (engagement * 0.4) + (recency * 100 * 0.35) + (similarity * 100) + (random * 100);
-}
-
-function renderFeed() {
-  const container = document.getElementById('feedContainer');
-  container.innerHTML = '';
-  
-  posts.forEach(post => {
-    container.appendChild(createPostElement(post));
-  });
-  
-  if (posts.length === 0) {
-    container.innerHTML = '<div class="empty-state">No posts yet. Follow users to see content.</div>';
-  }
-}
-
-function createPostElement(post) {
-  const div = document.createElement('div');
-  div.className = 'post-card';
-  div.innerHTML = `
-    <div class="post-header">
-      <div class="post-user">
-        <img src="${post.user_avatar || '/default-avatar.png'}" class="avatar" onerror="this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'">
-        <div class="user-info">
-          <span class="username">${post.username} ${post.verified ? '<span class="verified">✓</span>' : ''}</span>
-          <div class="meta">${post.university} • ${post.course} • ${timeAgo(post.created_at)}</div>
+    container.innerHTML = posts.map(post => `
+        <div class="post-card" style="border-bottom:1px solid var(--border);padding:16px 0;">
+            <div class="post-header" style="display:flex;align-items:center;gap:10px;padding:0 16px;margin-bottom:12px;">
+                <img src="${post.user_avatar || 'https://i.pravatar.cc/150'}" style="width:32px;height:32px;border-radius:50%;">
+                <div>
+                    <div style="font-weight:600;">${post.username}</div>
+                    <div style="font-size:12px;color:var(--text-secondary);">${post.university || 'No uni'} • ${timeAgo(post.created_at)}</div>
+                </div>
+            </div>
+            <div style="padding:0 16px;margin-bottom:12px;">${post.caption || ''}</div>
+            ${post.media_url ? `<img src="${post.media_url}" style="width:100%;aspect-ratio:1;object-fit:cover;">` : ''}
+            <div style="padding:12px 16px;color:var(--text-secondary);font-size:13px;">
+                ${post.likes_count || 0} likes • ${post.upvotes_count || 0} upvotes • ${post.comments_count || 0} comments
+            </div>
         </div>
-      </div>
-      <button class="more-btn" onclick="showPostOptions(${post.id})">•••</button>
-    </div>
-    
-    <div class="post-content">
-      <div class="caption">${escapeHtml(post.caption)}</div>
-      ${post.tags ? `<div class="tags">${post.tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('')}</div>` : ''}
-    </div>
-    
-    ${post.media_url ? `
-      <div style="position:relative;">
-        ${post.media_type === 'video' 
-          ? `<video src="${post.media_url}" controls style="width:100%;display:block;max-height:600px;background:#000;"></video>`
-          : `<img src="${post.media_url}" class="post-media" onclick="openPostDetail(${post.id})">`
-        }
-      </div>
-    ` : ''}
-    
-    <div class="post-actions">
-      <div class="action-group">
-        <button class="action-btn like ${post.user_liked ? 'active' : ''}" onclick="toggleLike(${post.id}, this)">
-          <svg viewBox="0 0 24 24" fill="${post.user_liked ? 'currentColor' : 'none'}"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
-        
-        <div class="vote-group">
-          <button class="vote-btn up ${post.user_vote === 'up' ? 'active' : ''}" onclick="handleVote(${post.id}, 'up', this)">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-          </button>
-          <span class="vote-count" id="vote-count-${post.id}">${post.vote_count || 0}</span>
-          <button class="vote-btn down ${post.user_vote === 'down' ? 'active' : ''}" onclick="handleVote(${post.id}, 'down', this)">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-          </button>
-        </div>
-        
-        <button class="action-btn" onclick="openPostDetail(${post.id})">
-          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-        </button>
-        
-        <button class="action-btn" onclick="sharePost(${post.id})">
-          <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-        </button>
-      </div>
-      
-      <div class="action-group">
-        <button class="action-btn ${post.user_bookmarked ? 'active' : ''}" onclick="toggleBookmark(${post.id}, this)">
-          <svg viewBox="0 0 24 24" fill="${post.user_bookmarked ? 'currentColor' : 'none'}"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-        </button>
-        <button class="action-btn" onclick="downloadPost(${post.id})">
-          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-        </button>
-      </div>
-    </div>
-    
-    <div class="post-stats">
-      ${post.likes_count || 0} likes • ${post.upvotes_count || 0} upvotes • ${post.comments_count || 0} comments
-    </div>
-    
-    <div class="post-comments-preview" onclick="openPostDetail(${post.id})">
-      ${post.latest_comment ? `<span style="color:var(--text);font-weight:500;">${post.latest_comment.username}</span> ${escapeHtml(post.latest_comment.text)}` : 'View all comments'}
-    </div>
-  `;
-  return div;
+    `).join('');
 }
 
-// ==================== INTERACTIONS ====================
-async function toggleLike(postId, btn) {
-  btn.classList.toggle('active');
-  const svg = btn.querySelector('svg');
-  const isActive = btn.classList.contains('active');
-  svg.setAttribute('fill', isActive ? 'currentColor' : 'none');
-  
-  try {
-    await fetch(`/api/posts/${postId}/like`, {
-      method: 'POST',
-      headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('ct_token'),
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({like: isActive})
-    });
-  } catch (err) {
-    btn.classList.toggle('active');
-    svg.setAttribute('fill', isActive ? 'none' : 'currentColor');
-  }
+// ==================== OTHER PAGES ====================
+async function loadConversations() {
+    document.getElementById('conversationsList').innerHTML = '<div style="padding:40px;text-align:center;color:var(--text-secondary);">No messages yet</div>';
 }
 
-async function handleVote(postId, type, btn) {
-  const container = btn.closest('.vote-group');
-  const upBtn = container.querySelector('.up');
-  const downBtn = container.querySelector('.down');
-  const countEl = document.getElementById(`vote-count-${postId}`);
-  let currentCount = parseInt(countEl.textContent) || 0;
-  
-  // Check current state
-  const wasUp = upBtn.classList.contains('active');
-  const wasDown = downBtn.classList.contains('active');
-  
-  // Reset both
-  upBtn.classList.remove('active');
-  downBtn.classList.remove('active');
-  
-  // If clicking same, remove vote
-  if ((type === 'up' && wasUp) || (type === 'down' && wasDown)) {
-    currentCount += (type === 'up' ? -1 : 1);
-    countEl.textContent = currentCount;
-    sendVote(postId, null);
-    return;
-  }
-  
-  // Set new vote
-  btn.classList.add('active');
-  if (type === 'up') {
-    currentCount += wasDown ? 2 : 1;
-  } else {
-    currentCount -= wasUp ? 2 : 1;
-  }
-  countEl.textContent = currentCount;
-  sendVote(postId, type);
+async function loadNotifications() {
+    document.getElementById('notificationsList').innerHTML = '<div style="padding:40px;text-align:center;color:var(--text-secondary);">No notifications</div>';
 }
 
-async function sendVote(postId, voteType) {
-  try {
-    await fetch(`/api/posts/${postId}/vote`, {
-      method: 'POST',
-      headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('ct_token'),
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({vote: voteType})
-    });
-  } catch (err) {
-    console.error('Vote failed:', err);
-  }
-}
-
-async function toggleBookmark(postId, btn) {
-  btn.classList.toggle('active');
-  const svg = btn.querySelector('svg');
-  const isActive = btn.classList.contains('active');
-  svg.setAttribute('fill', isActive ? 'currentColor' : 'none');
-  
-  await fetch(`/api/posts/${postId}/bookmark`, {
-    method: 'POST',
-    headers: {'Authorization': 'Bearer ' + localStorage.getItem('ct_token')}
-  });
+async function loadProfile() {
+    if (!currentUser) return;
+    document.getElementById('profileUsername').textContent = currentUser.username;
+    document.getElementById('profileUniversity').textContent = currentUser.university || 'No university';
+    document.getElementById('profileCourse').textContent = currentUser.course || '';
+    document.getElementById('profileBio').textContent = currentUser.bio || '';
+    document.getElementById('profileAvatar').src = currentUser.avatar || 'https://i.pravatar.cc/150';
+    document.getElementById('statPosts').textContent = currentUser.posts_count || 0;
+    document.getElementById('statFollowers').textContent = currentUser.followers_count || 0;
+    document.getElementById('statFollowing').textContent = currentUser.following_count || 0;
 }
 
 // ==================== CREATE POST ====================
 function openCreateModal() {
-  document.getElementById('createModal').classList.add('active');
-  currentTags = [];
-  renderTags();
+    document.getElementById('createModal').classList.add('active');
 }
 
 function closeCreateModal() {
-  document.getElementById('createModal').classList.remove('active');
-  document.getElementById('fileInput').value = '';
-  document.getElementById('filePreview').style.display = 'none';
-  document.getElementById('postCaption').value = '';
-  currentTags = [];
-  renderTags();
-  validatePost();
+    document.getElementById('createModal').classList.remove('active');
+    document.getElementById('fileInput').value = '';
+    document.getElementById('filePreview').style.display = 'none';
+    document.getElementById('postCaption').value = '';
 }
 
 function handleFileSelect(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-  
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    const preview = document.getElementById('previewImg');
-    preview.src = e.target.result;
-    document.getElementById('filePreview').style.display = 'block';
-  };
-  reader.readAsDataURL(file);
-}
-
-function addTag() {
-  const input = document.getElementById('tagInput');
-  const tag = input.value.trim().replace(/#/g, '');
-  if (tag && currentTags.length < 4 && !currentTags.includes(tag)) {
-    currentTags.push(tag);
-    renderTags();
-    input.value = '';
-  }
-}
-
-function renderTags() {
-  const container = document.getElementById('tagList');
-  container.innerHTML = currentTags.map(t => `
-    <span style="background:var(--elevated);padding:4px 12px;border-radius:16px;font-size:13px;display:flex;align-items:center;gap:4px;">
-      #${escapeHtml(t)}
-      <span onclick="removeTag('${t}')" style="cursor:pointer;color:var(--text-secondary);">×</span>
-    </span>
-  `).join('');
-}
-
-function removeTag(tag) {
-  currentTags = currentTags.filter(t => t !== tag);
-  renderTags();
-}
-
-function validatePost() {
-  const hasMedia = document.getElementById('fileInput').files.length > 0;
-  const hasCaption = document.getElementById('postCaption').value.trim().length > 0;
-  const btn = document.getElementById('shareBtn');
-  btn.disabled = !(hasMedia || hasCaption);
-  btn.style.opacity = btn.disabled ? '0.5' : '1';
+    if (e.target.files[0]) {
+        document.getElementById('filePreview').style.display = 'block';
+        document.getElementById('previewImg').src = URL.createObjectURL(e.target.files[0]);
+        document.getElementById('shareBtn').disabled = false;
+        document.getElementById('shareBtn').style.opacity = '1';
+    }
 }
 
 async function submitPost() {
-  const btn = document.getElementById('shareBtn');
-  btn.textContent = 'Sharing...';
-  
-  const formData = new FormData();
-  const fileInput = document.getElementById('fileInput');
-  if (fileInput.files[0]) {
-    formData.append('media', fileInput.files[0]);
-  }
-  formData.append('caption', document.getElementById('postCaption').value);
-  formData.append('tags', JSON.stringify(currentTags));
-  formData.append('course_id', document.getElementById('courseSelect').value);
-  
-  try {
-    const res = await fetch('/api/posts', {
-      method: 'POST',
-      headers: {'Authorization': 'Bearer ' + localStorage.getItem('ct_token')},
-      body: formData
-    });
+    const btn = document.getElementById('shareBtn');
+    btn.textContent = 'Sharing...';
     
-    if (res.ok) {
-      closeCreateModal();
-      loadFeed(); // Refresh
-      navigateTo('home');
+    const formData = new FormData();
+    const fileInput = document.getElementById('fileInput');
+    if (fileInput.files[0]) formData.append('media', fileInput.files[0]);
+    formData.append('caption', document.getElementById('postCaption').value);
+    
+    try {
+        const res = await fetch(`${API_BASE}/api/posts`, {
+            method: 'POST',
+            headers: {'Authorization': 'Bearer ' + localStorage.getItem('ct_token')},
+            body: formData
+        });
+        
+        if (res.ok) {
+            closeCreateModal();
+            loadFeed();
+            navigateTo('home');
+        }
+    } catch (err) {
+        alert('Failed to create post');
     }
-  } catch (err) {
-    alert('Failed to create post');
-  } finally {
     btn.textContent = 'Share';
-  }
-}
-
-// ==================== SEARCH ====================
-let searchTimeout;
-function debounceSearch() {
-  clearTimeout(searchTimeout);
-  searchTimeout = setTimeout(performSearch, 300);
-}
-
-async function performSearch() {
-  const query = document.getElementById('searchInput').value.trim();
-  const activeTab = document.querySelector('.search-tab.active').textContent.toLowerCase();
-  const results = document.getElementById('searchResults');
-  
-  if (!query) {
-    results.innerHTML = '<div class="empty-state">Search for posts, people, or trends</div>';
-    return;
-  }
-  
-  results.innerHTML = '<div style="padding:40px;text-align:center;"><div class="spinner" style="width:32px;height:32px;margin:0 auto;border-width:2px;"></div></div>';
-  
-  try {
-    const res = await fetch(`/api/search?q=${encodeURIComponent(query)}&type=${activeTab}`, {
-      headers: {'Authorization': 'Bearer ' + localStorage.getItem('ct_token')}
-    });
-    const data = await res.json();
-    renderSearchResults(data, activeTab);
-  } catch (err) {
-    results.innerHTML = '<div class="empty-state">Search failed</div>';
-  }
-}
-
-function renderSearchResults(data, type) {
-  const container = document.getElementById('searchResults');
-  
-  if (type === 'posts') {
-    container.innerHTML = data.map(post => createPostElement(post).outerHTML).join('');
-  } else if (type === 'people') {
-    container.innerHTML = data.map(user => `
-      <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);">
-        <img src="${user.avatar}" class="avatar" style="width:44px;height:44px;">
-        <div style="flex:1;">
-          <div style="font-weight:600;">${user.username}</div>
-          <div style="font-size:13px;color:var(--text-secondary);">${user.university}</div>
-        </div>
-        <button onclick="toggleFollow(${user.id}, this)" style="background:${user.following ? 'transparent' : 'var(--text)'};color:${user.following ? 'var(--text)' : 'var(--bg)'};border:1px solid var(--border);padding:6px 16px;border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;">
-          ${user.following ? 'Following' : 'Follow'}
-        </button>
-      </div>
-    `).join('');
-  } else {
-    // Trending
-    container.innerHTML = data.map(tag => `
-      <div style="padding:16px 0;border-bottom:1px solid var(--border);cursor:pointer;" onclick="document.getElementById('searchInput').value='${tag.name}';debounceSearch();">
-        <div style="font-weight:600;">#${tag.name}</div>
-        <div style="font-size:13px;color:var(--text-secondary);">${tag.count} posts</div>
-      </div>
-    `).join('');
-  }
-}
-
-function switchSearchTab(type, el) {
-  document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-  debounceSearch();
-}
-
-// ==================== NOTIFICATIONS ====================
-async function loadNotifications() {
-  try {
-    const res = await fetch('/api/notifications', {
-      headers: {'Authorization': 'Bearer ' + localStorage.getItem('ct_token')}
-    });
-    notifications = await res.json();
-    renderNotifications();
-    updateNotificationBadge();
-  } catch (err) {
-    console.error('Failed to load notifications');
-  }
-}
-
-function renderNotifications() {
-  const container = document.getElementById('notificationsList');
-  if (notifications.length === 0) {
-    container.innerHTML = '<div class="empty-state">No notifications yet</div>';
-    return;
-  }
-  
-  container.innerHTML = notifications.map(n => `
-    <div class="notification-item ${n.read ? '' : 'unread'}" onclick="markRead(${n.id})">
-      <div class="notification-icon">
-        ${getNotificationIcon(n.type)}
-      </div>
-      <div class="notification-content">
-        <div class="notification-text">
-          <strong>${n.actor_username}</strong> ${n.message}
-        </div>
-        <div class="notification-time">${timeAgo(n.created_at)}</div>
-      </div>
-      ${n.post_image ? `<img src="${n.post_image}" style="width:44px;height:44px;object-fit:cover;border-radius:4px;">` : ''}
-    </div>
-  `).join('');
-}
-
-function getNotificationIcon(type) {
-  const icons = {
-    like: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>',
-    comment: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>',
-    follow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>',
-    vote: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>'
-  };
-  return icons[type] || icons.like;
-}
-
-async function markRead(id) {
-  await fetch(`/api/notifications/${id}/read`, {
-    method: 'POST',
-    headers: {'Authorization': 'Bearer ' + localStorage.getItem('ct_token')}
-  });
-  loadNotifications();
-}
-
-function updateNotificationBadge() {
-  const unread = notifications.filter(n => !n.read).length;
-  const badge = document.getElementById('notifBadgeDrawer');
-  if (unread > 0) {
-    badge.textContent = unread;
-    badge.classList.remove('hidden');
-  } else {
-    badge.classList.add('hidden');
-  }
-}
-
-// ==================== MESSAGES ====================
-async function loadConversations() {
-  try {
-    const res = await fetch('/api/conversations', {
-      headers: {'Authorization': 'Bearer ' + localStorage.getItem('ct_token')}
-    });
-    conversations = await res.json();
-    renderConversations();
-  } catch (err) {
-    console.error('Failed to load conversations');
-  }
-}
-
-function renderConversations() {
-  const container = document.getElementById('conversationsList');
-  if (conversations.length === 0) {
-    container.innerHTML = '<div class="empty-state">No messages yet</div>';
-    return;
-  }
-  
-  container.innerHTML = conversations.map(c => `
-    <div class="chat-list-item" onclick="openChat(${c.id}, '${c.partner_name}')">
-      <img src="${c.partner_avatar}" class="avatar" style="width:56px;height:56px;">
-      <div class="chat-info">
-        <div class="chat-name">${c.partner_name}</div>
-        <div class="chat-preview">${c.last_message || 'Start chatting'}</div>
-      </div>
-      <div class="chat-meta">
-        <span class="chat-time">${c.last_message_at ? timeAgo(c.last_message_at) : ''}</span>
-        ${c.unread_count ? `<span class="unread-count">${c.unread_count}</span>` : ''}
-      </div>
-    </div>
-  `).join('');
-}
-
-function openChat(id, name) {
-  activeChatId = id;
-  document.getElementById('chatPartnerName').textContent = name;
-  navigateTo('chat');
-  loadMessages(id);
-  resetMessagePolling();
-}
-
-async function loadMessages(conversationId) {
-  try {
-    const res = await fetch(`/api/conversations/${conversationId}/messages`, {
-      headers: {'Authorization': 'Bearer ' + localStorage.getItem('ct_token')}
-    });
-    const messages = await res.json();
-    renderMessages(messages);
-    lastMessageCount = messages.length;
-  } catch (err) {
-    console.error('Failed to load messages');
-  }
-}
-
-function renderMessages(messages) {
-  const container = document.getElementById('chatMessages');
-  container.innerHTML = messages.map(m => `
-    <div class="message ${m.sender_id === currentUser.id ? 'sent' : ''}">
-      <div>
-        <div class="message-bubble">${escapeHtml(m.content)}</div>
-        <div class="message-meta">
-          ${timeAgo(m.created_at)}
-          ${m.sender_id === currentUser.id ? `
-            <span class="read-receipt ${m.read ? 'read' : ''}">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </span>
-          ` : ''}
-        </div>
-      </div>
-    </div>
-  `).join('');
-  container.scrollTop = container.scrollHeight;
-}
-
-async function sendMessage() {
-  const input = document.getElementById('messageInput');
-  const content = input.value.trim();
-  if (!content || !activeChatId) return;
-  
-  input.value = '';
-  
-  try {
-    await fetch(`/api/conversations/${activeChatId}/messages`, {
-      method: 'POST',
-      headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('ct_token'),
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({content})
-    });
-    loadMessages(activeChatId);
-  } catch (err) {
-    alert('Failed to send message');
-  }
-}
-
-// Adaptive polling for messages
-function setupPolling() {
-  // Notifications every 5 minutes
-  setInterval(loadNotifications, POLLING.notifications);
-  
-  // Messages with adaptive interval
-  startMessagePolling();
-}
-
-function startMessagePolling() {
-  if (messageIntervalId) clearInterval(messageIntervalId);
-  
-  messageIntervalId = setInterval(async () => {
-    if (!activeChatId) {
-      // Just refresh conversation list
-      loadConversations();
-      return;
-    }
-    
-    // Check for new messages in active chat
-    const res = await fetch(`/api/conversations/${activeChatId}/messages/check?after=${lastMessageCount}`, {
-      headers: {'Authorization': 'Bearer ' + localStorage.getItem('ct_token')}
-    });
-    const {has_new} = await res.json();
-    
-    if (has_new) {
-      loadMessages(activeChatId);
-      POLLING.messages.current = POLLING.messages.base; // Reset
-    } else {
-      // Increase interval up to max
-      POLLING.messages.current = Math.min(
-        POLLING.messages.current + POLLING.messages.base,
-        POLLING.messages.max
-      );
-    }
-    
-    // Restart with new interval
-    clearInterval(messageIntervalId);
-    startMessagePolling();
-  }, POLLING.messages.current);
-}
-
-function resetMessagePolling() {
-  POLLING.messages.current = POLLING.messages.base;
-  startMessagePolling();
-}
-
-// ==================== PROFILE ====================
-async function loadProfile() {
-  if (!currentUser) return;
-  
-  document.getElementById('profileUsername').textContent = currentUser.username;
-  document.getElementById('profileUniversity').textContent = currentUser.university || 'No university set';
-  document.getElementById('profileCourse').textContent = currentUser.course || '';
-  document.getElementById('profileBio').textContent = currentUser.bio || '';
-  document.getElementById('profileAvatar').src = currentUser.avatar || '';
-  
-  document.getElementById('statPosts').textContent = currentUser.posts_count || 0;
-  document.getElementById('statFollowers').textContent = currentUser.followers_count || 0;
-  document.getElementById('statFollowing').textContent = currentUser.following_count || 0;
-  
-  // Load user posts grid
-  try {
-    const res = await fetch(`/api/users/${currentUser.id}/posts`, {
-      headers: {'Authorization': 'Bearer ' + localStorage.getItem('ct_token')}
-    });
-    const userPosts = await res.json();
-    
-    const grid = document.getElementById('profileGrid');
-    grid.innerHTML = userPosts.map(p => `
-      <div class="grid-item" onclick="openPostDetail(${p.id})">
-        ${p.media_url ? `<img src="${p.media_url}">` : '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--elevated);">📝</div>'}
-      </div>
-    `).join('');
-  } catch (err) {
-    console.error('Failed to load user posts');
-  }
-}
-
-function openEditProfile() {
-  document.getElementById('editProfileModal').classList.add('active');
-  document.getElementById('editName').value = currentUser.full_name || '';
-  document.getElementById('editUsername').value = currentUser.username || '';
-  document.getElementById('editUniversity').value = currentUser.university || '';
-  document.getElementById('editCourse').value = currentUser.course || '';
-  document.getElementById('editBio').value = currentUser.bio || '';
-  document.getElementById('editAvatar').src = currentUser.avatar || '';
-}
-
-function closeEditProfile() {
-  document.getElementById('editProfileModal').classList.remove('active');
-}
-
-async function saveProfile() {
-  const updates = {
-    full_name: document.getElementById('editName').value,
-    username: document.getElementById('editUsername').value,
-    university: document.getElementById('editUniversity').value,
-    course: document.getElementById('editCourse').value,
-    bio: document.getElementById('editBio').value
-  };
-  
-  try {
-    await fetch('/api/users/me', {
-      method: 'PATCH',
-      headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('ct_token'),
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(updates)
-    });
-    
-    // Refresh user data
-    fetchUserData();
-    closeEditProfile();
-  } catch (err) {
-    alert('Failed to update profile');
-  }
-}
-
-function handleAvatarChange(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-  
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    document.getElementById('editAvatar').src = e.target.result;
-  };
-  reader.readAsDataURL(file);
-  
-  // Upload immediately for preview, then save with profile
-  // In real implementation, upload to Cloudinary here
-}
-
-function removeAvatar() {
-  document.getElementById('editAvatar').src = '';
-  // Mark for removal on save
-}
-
-async function toggleFollow(userId, btn) {
-  const following = btn.textContent.trim() === 'Following';
-  btn.textContent = following ? 'Follow' : 'Following';
-  btn.style.background = following ? 'var(--text)' : 'transparent';
-  btn.style.color = following ? 'var(--bg)' : 'var(--text)';
-  
-  await fetch(`/api/users/${userId}/follow`, {
-    method: 'POST',
-    headers: {'Authorization': 'Bearer ' + localStorage.getItem('ct_token')},
-    body: JSON.stringify({follow: !following})
-  });
-}
-
-// ==================== SUGGESTIONS ====================
-async function loadSuggestions() {
-  try {
-    const res = await fetch('/api/suggestions', {
-      headers: {'Authorization': 'Bearer ' + localStorage.getItem('ct_token')}
-    });
-    const users = await res.json();
-    
-    if (users.length > 0) {
-      document.getElementById('suggestedSection').style.display = 'block';
-      const list = document.getElementById('suggestedList');
-      list.innerHTML = users.map(u => `
-        <div style="flex-shrink:0;width:80px;text-align:center;">
-          <img src="${u.avatar}" style="width:64px;height:64px;border-radius:50%;object-fit:cover;margin-bottom:8px;border:1px solid var(--border);">
-          <div style="font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${u.username}</div>
-          <button onclick="toggleFollow(${u.id}, this)" style="background:var(--text);color:var(--bg);border:none;padding:4px 12px;border-radius:8px;font-size:11px;font-weight:600;margin-top:4px;cursor:pointer;">Follow</button>
-        </div>
-      `).join('');
-    }
-  } catch (err) {
-    console.error('Failed to load suggestions');
-  }
-}
-
-// ==================== POST DETAIL ====================
-async function openPostDetail(postId) {
-  // Load full post with comments
-  try {
-    const res = await fetch(`/api/posts/${postId}`, {
-      headers: {'Authorization': 'Bearer ' + localStorage.getItem('ct_token')}
-    });
-    const post = await res.json();
-    
-    const container = document.getElementById('postDetailContent');
-    container.innerHTML = createPostElement(post).outerHTML + `
-      <div class="comments-section">
-        ${post.comments ? post.comments.map(c => `
-          <div class="comment">
-            <img src="${c.user_avatar}" class="avatar">
-            <div class="comment-content">
-              <div class="comment-user">${c.username}</div>
-              <div class="comment-text">${escapeHtml(c.text)}</div>
-              <div class="comment-actions">Reply • ${timeAgo(c.created_at)}</div>
-            </div>
-          </div>
-        `).join('') : ''}
-      </div>
-      <div style="height:100px;"></div>
-    `;
-    
-    document.getElementById('postModal').classList.add('active');
-  } catch (err) {
-    console.error('Failed to load post');
-  }
-}
-
-function closePostModal() {
-  document.getElementById('postModal').classList.remove('active');
-}
-
-function showPostOptions(postId) {
-  // Simple implementation - in real app use custom dropdown
-  if (confirm('Delete this post?')) {
-    fetch(`/api/posts/${postId}`, {
-      method: 'DELETE',
-      headers: {'Authorization': 'Bearer ' + localStorage.getItem('ct_token')}
-    }).then(() => loadFeed());
-  }
-}
-
-// ==================== SETTINGS ====================
-function toggleSetting(el, setting) {
-  el.classList.toggle('active');
-  const isActive = el.classList.contains('active');
-  
-  // Save to backend
-  fetch('/api/users/me/settings', {
-    method: 'PATCH',
-    headers: {
-      'Authorization': 'Bearer ' + localStorage.getItem('ct_token'),
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({[setting]: isActive})
-  });
-}
-
-function changePassword() {
-  const newPass = prompt('Enter new password:');
-  if (newPass) {
-    fetch('/api/users/me/password', {
-      method: 'POST',
-      headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('ct_token'),
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({password: newPass})
-    }).then(() => alert('Password updated'));
-  }
-}
-
-function downloadData() {
-  alert('Your data export has been requested. You will receive an email when it is ready.');
 }
 
 // ==================== UTILITIES ====================
-function logout() {
-  localStorage.removeItem('ct_token');
-  window.location.href = 'index.html';
-}
-
 function timeAgo(date) {
-  const seconds = Math.floor((new Date() - new Date(date)) / 1000);
-  let interval = seconds / 31536000;
-  if (interval > 1) return Math.floor(interval) + 'y';
-  interval = seconds / 2592000;
-  if (interval > 1) return Math.floor(interval) + 'mo';
-  interval = seconds / 86400;
-  if (interval > 1) return Math.floor(interval) + 'd';
-  interval = seconds / 3600;
-  if (interval > 1) return Math.floor(interval) + 'h';
-  interval = seconds / 60;
-  if (interval > 1) return Math.floor(interval) + 'm';
-  return 'now';
+    if (!date) return 'now';
+    const seconds = Math.floor((new Date() - new Date(date)) / 1000);
+    if (seconds < 60) return 'now';
+    const minutes = Math.floor(seconds / 60);
+    if (minutes < 60) return minutes + 'm';
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return hours + 'h';
+    return Math.floor(hours / 24) + 'd';
 }
 
-function escapeHtml(text) {
-  if (!text) return '';
-  const div = document.createElement('div');
-  div.textContent = text;
-  return div.innerHTML;
+// ==================== LANDING PAGE ANIMATIONS ====================
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const loader = document.getElementById('loader');
+        if (loader) loader.classList.add('done');
+    }, 1500);
+});
+
+window.addEventListener('scroll', () => {
+    const nav = document.getElementById('nav');
+    if (nav) nav.classList.toggle('scrolled', scrollY > 60);
+});
+
+function toggleMob() {
+    document.getElementById('mobMenu').classList.toggle('open');
+    document.getElementById('hamBtn').classList.toggle('open');
 }
 
-function sharePost(postId) {
-  const url = `${window.location.origin}/post/${postId}`;
-  if (navigator.share) {
-    navigator.share({url});
-  } else {
-    navigator.clipboard.writeText(url);
-    alert('Link copied to clipboard');
-  }
+function closeMob() {
+    document.getElementById('mobMenu').classList.remove('open');
+    document.getElementById('hamBtn').classList.remove('open');
 }
 
-function downloadPost(postId) {
-  alert('Download started');
+function openSignin() {
+    document.getElementById('signinModal').classList.add('open');
 }
+
+function closeSignin() {
+    document.getElementById('signinModal').classList.remove('open');
+}
+
+function closeSigninOutside(e) {
+    if (e.target === document.getElementById('signinModal')) closeSignin();
+}
+
+function toggleFAQ(btn) {
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+}
+
+// Typewriter effect
+const words = ['Students.', 'Educators.', 'Researchers.', 'Dreamers.', 'The Next Generation.'];
+let wi = 0, ci = 0, del = false;
+const twEl = document.getElementById('twEl');
+
+function tw() {
+    if (!twEl) return;
+    const w = words[wi];
+    if (!del) {
+        twEl.textContent = w.slice(0, ++ci);
+        if (ci === w.length) {
+            del = true;
+            setTimeout(tw, 1900);
+            return;
+        }
+        setTimeout(tw, 85);
+    } else {
+        twEl.textContent = w.slice(0, --ci);
+        if (ci === 0) {
+            del = false;
+            wi = (wi + 1) % words.length;
+            setTimeout(tw, 420);
+            return;
+        }
+        setTimeout(tw, 42);
+    }
+}
+setTimeout(tw, 3100);
+
+// Scroll reveal animations
+const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.add('vis');
+            ro.unobserve(e.target);
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+// Counter animation
+const co = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = parseInt(el.dataset.count);
+        const suffix = el.dataset.suffix || '+';
+        let n = 0, step = Math.ceil(target / 70);
+        const t = setInterval(() => {
+            n += step;
+            if (n >= target) {
+                n = target;
+                clearInterval(t);
+            }
+            el.textContent = target >= 10000 ? Math.floor(n / 1000) + 'K' + suffix : n + suffix;
+        }, 28);
+        co.unobserve(el);
+    });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-n').forEach(el => co.observe(el));
 
 // Close modals on escape
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closeCreateModal();
-    closePostModal();
-    closeEditProfile();
-  }
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        closeCreateModal();
+        closeSignin();
+    }
 });
+
+// ==================== INITIALIZATION ====================
+document.addEventListener('DOMContentLoaded', () => {
+    // Check if user is logged in
+    if (localStorage.getItem('ct_token')) {
+        showApp();
+    } else {
+        showLanding();
+    }
+});
+
+// Missing functions stub
+function debounceSearch() { console.log('searching...'); }
+function openEditProfile() { alert('Edit profile coming soon'); }
+function saveProfile() { closeEditProfile(); }
+function handleAvatarChange(e) { document.getElementById('editAvatar').src = URL.createObjectURL(e.target.files[0]); }
+function removeAvatar() { document.getElementById('editAvatar').src = 'https://i.pravatar.cc/150'; }
+function addTag() { 
+    const input = document.getElementById('tagInput');
+    const list = document.getElementById('tagList');
+    if(input.value && list.children.length < 4) {
+        list.innerHTML += `<span style="background:var(--elevated);padding:4px 8px;border-radius:4px;font-size:12px;">#${input.value}</span>`;
+        input.value = '';
+    }
+}
+function validatePost() {
+    const caption = document.getElementById('postCaption').value;
+    const hasFile = document.getElementById('fileInput').files.length > 0;
+    document.getElementById('shareBtn').disabled = !(caption || hasFile);
+    document.getElementById('shareBtn').style.opacity = (caption || hasFile) ? '1' : '0.5';
+}
+function switchSearchTab(type, el) {
+    document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+}
+function changePassword() { alert('Password change coming soon'); }
+function downloadData() { alert('Data download coming soon'); }
+function toggleSetting(el, type) { el.classList.toggle('active'); }
+
 </script>
 </body>
 </html>
