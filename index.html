@@ -1503,9 +1503,10 @@ function renderPostCard(post) {
     const mediaHtml = post.media_url
         ? (post.media_type === 'video'
             ? `<div class="video-container" onclick="toggleVideoPlayback(this)" data-playing="false" style="border-radius: 12px; overflow: hidden;">
-                 <video class="post-media" loop playsinline preload="metadata" onloadedmetadata="this.currentTime=0.07" ontimeupdate="updateVideoProgress(this)">
-                   <source src="${esc(post.media_url)}">
-                 </video>
+                <video class="post-media" loop playsinline muted preload="metadata" 
+                  onloadedmetadata="this.currentTime=0.07" 
+                  ontimeupdate="updateVideoProgress(this)">
+
                  <div class="play-overlay"><div class="play-btn"></div></div>
                  <div class="video-controls" onclick="event.stopPropagation()">
                    <div class="video-progress" onclick="seekVideo(event, this)"></div>
