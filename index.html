@@ -1,11 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CollegeTrends — The Academic Network</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,300;1,600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary SEO -->
+  <title>CollegeTrends - Global Academic Social Network for Higher Institutions.</title>
+<meta name="description" content="Connect, share, and discover with students from universities worldwide on CollegeTrends, the ultimate social network for higher education institutions. Join the conversation, make friends, and stay updated on campus trends and events."
+
+  <meta name="keywords" content="college trends, student life, university culture, academic network, campus trends, CollegeTrends, Global Academic Social Network, ">
+  <meta name="author" content="CollegeTrends">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Canonical URL (Prevents duplicate content issues) -->
+  <link rel="canonical" href="https://collegetrends.vercel.app/">
+  
+  <!-- Open Graph (Facebook, LinkedIn, iMessage) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://collegetrends.vercel.app/">
+  <meta property="og:title" content="CollegeTrends — The Academic Network">
+  <meta property="og:description" content="Discover the latest trends in college life, academic culture, and student innovation.">
+  <meta property="og:image" content="https://collegetrends.vercel.app/og-image.jpg">
+  
+  <!-- Twitter/X Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://collegetrends.vercel.app/">
+  <meta name="twitter:title" content="CollegeTrends — The Academic Network">
+  <meta name="twitter:description" content="Discover the latest trends in college life, academic culture, and student innovation.">
+  <meta name="twitter:image" content="https://collegetrends.vercel.app/og-image.jpg">
+  
+  <!-- Favicon (Add these files to your public folder) -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  
+  <!-- Fonts (Your existing) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,300;1;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <!-- Theme Color (Mobile browser header color) -->
+  <meta name="theme-color" content="#0a0a0a">
 </head>
 <body>
 
@@ -14,6 +48,34 @@
 ═══════════════════════════════════════════════════════════════ -->
 <section id="landing-section" style="display:block;">
 <style>
+/* Special Post Type Badges */
+.special-badge {
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+}
+
+/* Enhanced tag chips for special types */
+.tag-chip {
+    transition: all 0.2s ease;
+}
+
+.tag-chip:hover {
+    transform: scale(1.05);
+}
+
+/* Post card enhancements for special types */
+.post-card {
+    transition: all 0.3s ease;
+}
+
+/* Hover effects for special post types */
+.post-card:hover {
+    background: rgba(255,255,255,0.02);
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:#080808;color:#f0f0f0;font-family:'Syne',sans-serif;overflow-x:hidden;cursor:none}
@@ -44,7 +106,7 @@ nav.scrolled{background:rgba(8,8,8,.9);backdrop-filter:blur(14px);-webkit-backdr
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,4px)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-4px)}
-.mob-menu{display:none;position:fixed;inset:0;background:#000;z-index:490;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem}
+.mob-menu{display:none;position:fixed;inset:0;background:#000;z-index:3090;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem}
 .mob-menu.open{display:flex}
 .mob-menu a{font-family:var(--serif);font-size:clamp(2rem,7vw,3.5rem);font-weight:600;color:#fff;text-decoration:none;opacity:0;transform:translateY(16px);transition:opacity .3s,transform .3s}
 .mob-menu.open a{opacity:1;transform:none}
@@ -186,7 +248,7 @@ footer{border-top:1px solid var(--border);padding:5rem 5% 2rem}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
 .reveal.vis{opacity:1;transform:translateY(0)}
 /* Signin modal */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:800;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .3s}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:8000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .3s}
 .modal-overlay.open{opacity:1;visibility:visible}
 .modal-content{background:#0d0d0d;border:1px solid #222;padding:2.5rem;max-width:440px;width:90%;position:relative}
 .modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer;line-height:1}
@@ -216,6 +278,9 @@ footer{border-top:1px solid var(--border);padding:5rem 5% 2rem}
   .hamburger{display:flex}
   .nav-links,.nav-cta{display:none}
 }
+.Popularconsumption{color:var(--muted);
+  font-size: 70%;width:80vw;max-width: 900px;
+line-height:3vh}
 </style>
 
 <!-- Custom cursor -->
@@ -226,8 +291,35 @@ footer{border-top:1px solid var(--border);padding:5rem 5% 2rem}
 <div id="loader">
   <div class="ld-logo">CollegeTrends</div>
   <div class="ld-bar"></div>
+  <img src="Collegetrendslogo (1).jpg" class="heroimage">
 </div>
-
+<style>
+  .heroimage{
+   display: block;
+   height: auto;
+   width:auto;
+   max-height: 400px;
+   max-width: 400px;
+  }
+ .image-container {
+      position:relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color:transparent;
+      top:20vh;
+      z-index:2000;
+    }
+    .image {
+      border-radius: 12px;
+      width: auto;
+      height:auto;
+      max-width:95vw;
+      max-height:auto;
+      object-fit: cover;
+    }
+  
+</style>
 <!-- Mobile menu -->
 <div class="mob-menu" id="mobMenu">
   <a href="#features" onclick="closeMob()">Features</a>
@@ -249,24 +341,32 @@ footer{border-top:1px solid var(--border);padding:5rem 5% 2rem}
   <button class="nav-cta" onclick="openSignin()">Sign In</button>
   <button class="hamburger" id="hamBtn" onclick="toggleMob()"><span></span><span></span><span></span></button>
 </nav>
-
+  <div class="image-container">
+    <img src="Screenshot_20260408-234957_1.png" alt="Your Image" class="image">
+  </div>
 <!-- Hero -->
 <section id="hero">
   <div class="hero-grid-bg"></div>
   <div class="hero-left">
-    <div class="hero-tag">Now Open · Academic Network</div>
+    <div class="hero-tag">Now Open · Academic Social Network</div>
     <h1 class="hero-h">
-      <span class="hl"><span>Built for</span></span>
-      <span class="hl"><span>Academic</span></span>
-      <span class="hl"><span>Minds</span></span>
+      <span class="hl"><span>"Where Tokyo meets Toronto,</span></span>
+      <span class="hl"><span>Dubai meets Dublin,</span></span>
+      <span class="hl"><span>and Every Student tells their Story."</span></span>
     </h1>
-    <p class="hero-sub">Connect with students and educators across Africa and beyond. Share resources, build communities, and grow together.</p>
+    <p class="hero-sub">Connect with students across the Globe. Share resources, build 
+networks, and grow together.
+No cap. No gatekeeping. Just the whole world's student population 
+finally in one place — and yes, we know you have a deadline right now.</p>
     <div class="hero-tw"><span id="twEl" class="tw-text"></span></div>
     <div class="hero-btns">
       <a href="#signup" class="btn-white">Get Started →</a>
       <a href="#features" class="btn-ghost">Learn More</a>
     </div>
+
   </div>
+
+
   <div class="hero-right">
     <div class="img-mosaic">
       <img class="img-tall" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="">
@@ -277,23 +377,25 @@ footer{border-top:1px solid var(--border);padding:5rem 5% 2rem}
     <div class="hero-chip chip-b">📚 340+ Institutions</div>
   </div>
 </section>
-
+  <div style="top:0vh;" class="image-container">
+    <img  src="Screenshot_20260408-232141_1.png" alt="Your Image" class="image">
+  </div>
+  <div style="color:transparent;">777i</div>
 <!-- Marquee -->
 <div class="marquee-wrap">
   <div class="marquee-inner">
-    <span>Academic Network</span><span>Share Knowledge</span><span>Build Community</span><span>Connect Globally</span>
-    <span>Study Together</span><span>Grow Together</span><span>Africa & Beyond</span><span>Open to All</span>
-    <span>Academic Network</span><span>Share Knowledge</span><span>Build Community</span><span>Connect Globally</span>
-    <span>Study Together</span><span>Grow Together</span><span>Africa & Beyond</span><span>Open to All</span>
+    <span>Global Academic Social Network</span><span>Gain insight into various Trending Topics</span><span>Expand your reach and increase your circle.</span><span>Connect Globally</span>
+    <span>Study Together</span><span>Grow Together</span><span>Open to All</span>
+    <span>Share Knowledge</span><span>Gain access to things happening in your uni/Institution</span>
   </div>
 </div>
 
 <!-- Stats -->
 <section id="stats">
-  <div class="stat reveal"><span class="stat-n" data-count="12000" data-suffix="K+">0</span><span class="stat-l">Active Students</span></div>
-  <div class="stat reveal"><span class="stat-n" data-count="340" data-suffix="+">0</span><span class="stat-l">Institutions</span></div>
-  <div class="stat reveal"><span class="stat-n" data-count="800" data-suffix="+">0</span><span class="stat-l">Courses & Specialties</span></div>
-  <div class="stat reveal"><span class="stat-n" data-count="50" data-suffix="+">0</span><span class="stat-l">Countries Represented</span></div>
+  <div class="stat reveal"><span class="stat-n" data-count="4" data-suffix="+">0</span><span class="stat-l">Active Students</span></div>
+  <div class="stat reveal"><span class="stat-n" data-count="2" data-suffix="+">0</span><span class="stat-l">Institutions</span></div>
+  <div class="stat reveal"><span class="stat-n" data-count="2" data-suffix="+">0</span><span class="stat-l">Courses & Specialties</span></div>
+  <div class="stat reveal"><span class="stat-n" data-count="0" data-suffix="1">0</span><span class="stat-l">Countries Represented</span></div>
 </section>
 
 <!-- Features -->
@@ -304,19 +406,61 @@ footer{border-top:1px solid var(--border);padding:5rem 5% 2rem}
   </div>
   <div class="feat-grid">
     <div class="feat-card reveal"><span class="feat-num">01 —</span><span class="feat-ico">🎓</span><h3 class="feat-title">Courses & Specialties</h3><p class="feat-text">Discover and share knowledge across every field — engineering, medicine, arts, law, and beyond. Browse by institution, discipline, or trending topic.</p></div>
-    <div class="feat-card reveal"><span class="feat-num">02 —</span><span class="feat-ico">🌍</span><h3 class="feat-title">Academic Community</h3><p class="feat-text">Connect with peers, educators, and alumni from universities, polytechnics, and colleges across Africa and the world. Real connections built on shared academic purpose.</p></div>
+    <div class="feat-card reveal"><span class="feat-num">02 —</span><span class="feat-ico">🌍</span><h3 class="feat-title">Academic Community</h3><p class="feat-text">Connect with peers, educators, and alumni from universities, polytechnics, and colleges across  <u><b>The World.</b></u> Real connections built on shared academic purpose.</p></div>
     <div class="feat-card reveal"><span class="feat-num">03 —</span><span class="feat-ico">📄</span><h3 class="feat-title">Shared Resources</h3><p class="feat-text">Access study materials, guidelines, research papers, and course notes. Contribute and collaborate with your academic community in real time.</p></div>
-    <div class="feat-card reveal"><span class="feat-num">04 —</span><span class="feat-ico">📡</span><h3 class="feat-title">Stay in the Trend</h3><p class="feat-text">Get platform updates, release notes, and academic announcements. Never miss what's happening across your campus or the broader academic world.</p></div>
+    <div class="feat-card reveal">
+      <span class="feat-num">04 —</span>
+    <span class="feat-ico">📡</span><h3 class="feat-title">Stay in the Trend</h3><p class="feat-text">Get platform updates, release notes, and academic announcements. Never miss what's happening across your campus or the broader academic world.</p></div>
   </div>
 </section>
-
 <!-- How it works -->
 <section id="how">
-  <div class="reveal"><span class="sec-tag">Simple Onboarding</span><h2 class="sec-title">Live in Three Steps</h2></div>
+    <div class="image-container" style="top:0vh">
+    <img src="Screenshot_20260408-233200_1.png" alt="Your Image" class="image">
+  </div><div style="color:transparent">777</div>
+
+  <div class="reveal"><span class="sec-tag">Simple Onboarding</span><h2 class="sec-title">Enjoy</h2></div>
   <div class="steps">
     <div class="step reveal"><span class="step-n">01</span><h3 class="step-title">Create Your Profile</h3><p class="step-text">Sign up with your name, institution, and course. Your profile is your academic identity on CollegeTrends.</p></div>
-    <div class="step reveal"><span class="step-n">02</span><h3 class="step-title">Find Your Community</h3><p class="step-text">Connect with students and educators from your institution and beyond. Communities organized by course, specialty, and academic interest.</p></div>
+    <div class="step reveal"><span class="step-n">02</span><h3 class="step-title">Find Your Network/community</h3><p class="step-text">Connect with students and educators from your institution and accross the globe. Post organized by course, specialty, and academic interest, Uni & Popularity.</p></div>
     <div class="step reveal"><span class="step-n">03</span><h3 class="step-title">Share & Grow</h3><p class="step-text">Post resources, ask questions, share insights, and engage with academic content that actually matters to your field and career.</p></div>
+    
+    <div class="step reveal">
+  <span class="step-n">04</span>
+  <h3 class="step-title">Stay in the Trend</h3>
+  <p class="step-text">The half-life of academic knowledge is now 18 months and shrinking. In a landscape where 2.5 million new research papers publish annually and predatory journals spam your inbox daily, staying current isn't about consuming more—it's about filtering better. CollegeTrends deploys network effects over brute force: when 264 million students and researchers curate collectively, you don't drown in information. You surface what matters before it hits mainstream citation indexes. Early signal, zero noise.</p>
+</div>
+<div class="step reveal">
+  <span class="step-n">05</span>
+  <h3 class="step-title">Demolish the Paywall</h3>
+  <p class="step-text">The academic publishing complex extracts $25 billion annually while paying authors zero. 72% of peer-reviewed research remains locked behind paywalls, forcing even MIT researchers to use Sci-Hub. This isn't a business model—it's a market failure. CollegeTrends operates on the radical premise that knowledge created with public funding should flow freely to the public. We bypass the $40-per-article tollbooth not through piracy, but through institutional network effects: when universities interconnect directly, publishers become obsolete middlemen.</p>
+</div>
+<div class="step reveal">
+  <span class="step-n">06</span>
+  <h3 class="step-title">Monetize Your Cognition</h3>
+  <p class="step-text">Higher education has bifurcated into two economies: the tenured elite with research budgets, and the 45% of full-time students working 20+ hours weekly at unrelated jobs to survive. Meanwhile, the gig economy absorbs 24% of the workforce, yet academic skills remain non-fungible. CollegeTrends bridges this arbitrage gap. Peer review, data cleaning, literature synthesis—these are high-value cognitive tasks that firms pay consultants $200/hour to perform. We cut out the consulting middle layer and route capital directly to the cognitive workers. Your expertise isn't just "experience" to list on a CV—it's liquid capital.</p>
+</div>
+<div class="step reveal">
+  <span class="step-n">07</span>
+  <h3 class="step-title">Kill Email, Start Building</h3>
+  <p class="step-text">Academic collaboration has a coordination problem. Email threads fracture. Slack channels dilute into noise. 60.9% of UK research is now internationally co-authored, yet we still coordinate across time zones using tools designed for corporate marketing teams. CollegeTrends treats messaging as infrastructure, not feature creep. End-to-end encryption for IP protection. Thread-based organization by research phase. Smart routing that connects methodology questions to methodologists, not to your entire contact list. When communication friction drops, breakthrough frequency rises.</p>
+</div>
+<div class="step reveal">
+  <span class="step-n">08</span>
+  <h3 class="step-title">Collaborate Without Friction</h3>
+  <p class="step-text">Research productivity follows a power law: 1% of institutions produce 40% of breakthroughs. This concentration isn't because other 99% lack talent—they lack access. The UK produces more internationally co-authored papers than any major nation not because British researchers are superior, but because they network better. CollegeTrends democratizes this advantage. Real-time co-authoring with version control for datasets. Shared annotation layers on live papers. Project workspaces that inherit institutional permissions automatically. We don't just "enable" collaboration—we remove the transaction costs that currently restrict high-impact work to elite clusters.</p>
+</div>
+<div class="step reveal">
+  <span class="step-n">09</span>
+  <h3 class="step-title">Access the Global Brain</h3>
+  <p class="step-text">The U.S. hosts 1.2 million international students contributing $55 billion annually, yet most return home without maintaining institutional ties. This is brain circulation failure. LinkedIn commodifies connections; Twitter randomizes them; ResearchGate gamifies them with meaningless metrics. CollegeTrends engineers serendipity through structured access. Direct mentorship booking with verified experts. Q&A protocols that respect time constraints. 200+ countries represented not as a diversity statistic, but as a distributed cognition network. When a researcher in Nairobi can seamlessly collaborate with a lab in Boston, we stop talking about "brain drain" and start operating as a global brain.</p>
+</div>
+<div class="step reveal">
+  <span class="step-n">010</span>
+  <h3 class="step-title">Intelligence Over Alerts</h3>
+  <p class="step-text">Grant deadlines kill more research than hypothesis failure. 84% of universities now prioritize international recruitment, creating a hyper-competitive funding landscape where timing equals survival. Yet current notification systems operate on blunt-force psychology: blast everything, hope something sticks. CollegeTrends employs adversarial filtering. Our notification layer learns not just what you click, but what advances your specific research trajectory. Grant alerts 90 days pre-deadline with collaborator matching. Citation alerts when competitors publish in your whitespace. Conference deadlines weighted by your submission history. We don't notify you more—we notify you better. Attention is the scarcest resource in academia; we treat it as such.</p>
+</div>
+    
   </div>
 </section>
 
@@ -329,7 +473,7 @@ footer{border-top:1px solid var(--border);padding:5rem 5% 2rem}
   <div class="about-text reveal">
     <span class="sec-tag">Our Story</span>
     <h2 class="sec-title">More Than a Platform.<br><em>A Movement.</em></h2>
-    <p>CollegeTrends was built from a simple truth — <strong>students are brilliant, but disconnected.</strong> Across Africa and beyond, incredible academic talent sits isolated within campus walls, with no shared space to grow together.</p>
+    <p>CollegeTrends was built from a simple truth — <strong>students are brilliant, but disconnected.</strong> Across the World, incredible academic talent sits isolated within campus walls, with no shared space to grow together.</p>
     <p>Whether you're a first-year student, a PhD researcher, or a lecturer building course communities — <strong>this is your space.</strong></p>
     <p>We believe the future of education is social, shared, and borderless. <strong>CollegeTrends is where that future starts.</strong></p>
     <a href="#signup" class="btn-white" style="margin-top:.8rem;align-self:flex-start">Join the Movement →</a>
@@ -339,13 +483,13 @@ footer{border-top:1px solid var(--border);padding:5rem 5% 2rem}
 <!-- Testimonials -->
 <section id="testimonials">
   <div class="sec-head reveal">
-    <div><span class="sec-tag">Community Voices</span><h2 class="sec-title">What Students Say</h2></div>
+    <div><span class="sec-tag">Community Voices</span><h2 class="sec-title">What Students | Researchers Say.</h2></div>
     <span class="sec-count">03 stories</span>
   </div>
   <div class="testi-grid">
-    <div class="testi reveal"><p class="testi-q">"Finally a platform that actually understands the African university experience. It's not just another social app — it feels genuinely built for us."</p><div class="testi-author"><img class="testi-av" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt=""><div><span class="testi-name">Emeka O.</span><span class="testi-role">Computer Science · UNILAG</span></div></div></div>
-    <div class="testi reveal"><p class="testi-q">"I connected with students from three other universities in the same specialty as me within my first week. The academic community here is genuinely helpful."</p><div class="testi-author"><img class="testi-av" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt=""><div><span class="testi-name">Amara K.</span><span class="testi-role">Law & Policy · Covenant University</span></div></div></div>
-    <div class="testi reveal"><p class="testi-q">"As an educator, I use CollegeTrends to share resources and stay connected with my students between lectures. It's become part of how I teach."</p><div class="testi-author"><img class="testi-av" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80" alt=""><div><span class="testi-name">Dr. Adeyemi F.</span><span class="testi-role">Lecturer · OAU Ile-Ife</span></div></div></div>
+    <div class="testi reveal"><p class="testi-q">"Finally a platform that actually understands the Global Uni/related level academic experience. It's not just another social app — it feels genuinely built for us."</p><div class="testi-author"><img class="testi-av" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt=""><div><span class="testi-name">Robert O.</span><span class="testi-role">Computer Science · NYU</span></div></div></div>
+    <div class="testi reveal"><p class="testi-q">"I connected with students from three other universities in the same specialty as me within my first week. The academic community here is genuinely helpful."</p><div class="testi-author"><img class="testi-av" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt=""><div><span class="testi-name">Felicia K.</span><span class="testi-role">Law & Policy · UCLA</span></div></div></div>
+    <div class="testi reveal"><p class="testi-q">"As an educator, I use CollegeTrends to share resources and stay connected with my students between lectures. It's become part of how I teach."</p><div class="testi-author"><img class="testi-av" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80" alt=""><div><span class="testi-name">Dr. James F.</span><span class="testi-role">Lecturer · Princeton</span></div></div></div>
   </div>
 </section>
 
@@ -399,7 +543,7 @@ footer{border-top:1px solid var(--border);padding:5rem 5% 2rem}
   <div class="foot-grid">
     <div class="foot-brand">
       <a href="#" class="nav-logo"><span class="nav-dot"></span>CollegeTrends</a>
-      <p>The academic social network for students, educators, and institutions across Africa and beyond.</p>
+      <p>The academic social network for students, educators, and institutions across The Planet.</p>
       <div class="foot-social"><a href="#" class="soc-btn">𝕏</a><a href="#" class="soc-btn">in</a><a href="#" class="soc-btn">ig</a></div>
     </div>
     <div class="foot-col"><h4>Platform</h4><ul><li><a href="#about">About Us</a></li><li><a href="#features">Features</a></li><li><a href="#signup">Get Started</a></li></ul></div>
@@ -407,7 +551,7 @@ footer{border-top:1px solid var(--border);padding:5rem 5% 2rem}
     <div class="foot-col"><h4>Legal</h4><ul><li><a href="#terms">Terms of Service</a></li><li><a href="#privacy">Privacy Policy</a></li></ul></div>
   </div>
   <div class="foot-bottom">
-    <p>© 2025 CollegeTrends. All rights reserved.</p>
+    <p>© 2026 CollegeTrends. All rights reserved.</p>
     <div class="foot-bottom-links"><a href="#terms">Terms</a><a href="#privacy">Privacy</a><a href="#faq">Help</a></div>
   </div>
 
@@ -441,7 +585,7 @@ footer{border-top:1px solid var(--border);padding:5rem 5% 2rem}
 :root{--bg:#000;--surface:#0a0a0a;--elevated:#121212;--border:#262626;--text:#fff;--text-secondary:#a8a8a8;--accent:#fff;--error:#ff3040;--success:#00d084;--font-main:'Inter',sans-serif;--font-display:'Syne',sans-serif}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--font-main);overflow:hidden}
-#app{max-width:480px;height:100vh;margin:0 auto;background:var(--bg);position:relative;border-left:1px solid var(--border);border-right:1px solid var(--border);overflow:hidden}
+#app{max-width:480px;height:100vh;margin:0 auto;background:var(--bg);position:relative;border-left:none;border-right:none;overflow:hidden}
 .scroll-container{height:calc(100vh - 60px);overflow-y:auto;overflow-x:hidden;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:80px}
 .scroll-container::-webkit-scrollbar{display:none}
 .bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;height:60px;background:rgba(0,0,0,.95);backdrop-filter:blur(20px);border-top:1px solid var(--border);display:flex;justify-content:space-around;align-items:center;z-index:1000;padding:0 10px}
@@ -450,16 +594,16 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 .nav-item.active svg{stroke:var(--text);fill:var(--text)}
 .nav-item.create svg{stroke:var(--text);fill:none;transform:scale(1.2)}
 .nav-badge{position:absolute;top:12px;right:calc(50% - 12px);width:8px;height:8px;background:var(--error);border-radius:50%;border:2px solid var(--bg)}
-.top-header{position:sticky;top:0;background:rgba(0,0,0,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;z-index:100}
-.logo-text{font-family:var(--font-display);font-weight:800;font-size:20px;letter-spacing:-.5px}
+.top-header{position:sticky;top:0;backdrop-filter:blur(20px);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;z-index:100;}
+.logo-text{font-family:cursive;font-weight:800;font-size:20px;letter-spacing:-.5px}
 .menu-btn{width:32px;height:32px;display:flex;flex-direction:column;justify-content:center;gap:5px;cursor:pointer}
 .menu-btn span{display:block;width:20px;height:2px;background:var(--text);border-radius:1px}
 .drawer{position:fixed;top:0;left:0;width:280px;height:100%;background:var(--surface);border-right:1px solid var(--border);z-index:2000;transform:translateX(-100%);transition:transform .3s ease;overflow-y:auto}
 .drawer.open{transform:translateX(0)}
 .drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:1999;opacity:0;visibility:hidden;transition:all .3s}
 .drawer-overlay.open{opacity:1;visibility:visible}
-.drawer-header{padding:40px 20px 20px;border-bottom:1px solid var(--border)}
-.drawer-item{padding:16px 20px;display:flex;align-items:center;gap:16px;cursor:pointer;border-bottom:1px solid var(--border);font-size:14px;font-weight:500}
+.drawer-header{padding:40px 20px 20px;}
+.drawer-item{padding:16px 20px;display:flex;align-items:center;gap:16px;cursor:pointer;border-bottom:none;font-size:14px;font-weight:500}
 .drawer-item:hover{background:var(--elevated)}
 .drawer-item svg{width:20px;height:20px;stroke:var(--text-secondary);fill:none;stroke-width:2;flex-shrink:0}
 .page{display:none;animation:fadeIn .3s}
@@ -478,11 +622,14 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 .post-content{padding:0 16px;margin-bottom:10px}
 .caption{font-size:14px;line-height:1.5;margin-bottom:6px;word-wrap:break-word}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
-.tag{color:var(--text-secondary);font-size:13px}
-.tag::before{content:'#'}
-.post-media{width:100%;aspect-ratio:1;background:var(--elevated);object-fit:cover;display:block;cursor:pointer}
-video.post-media{aspect-ratio:auto}
-.post-actions{padding:10px 16px;display:flex;align-items:center;justify-content:space-between}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;margin-top:4px}
+.tag{background:rgba(0,149,246,0.1);color:#0095f6;font-size:12px;font-weight:600;padding:4px 12px;border-radius:16px;display:inline-flex;align-items:center;transition:background 0.2s;cursor:pointer}
+.tag:hover{background:rgba(0,149,246,0.2)}
+.tag::before{content:'#';margin-right:2px;opacity:0.8}
+
+.post-media{width:100%;aspect-ratio:1;background:var(--elevated);object-fit:cover;display:block;cursor:pointer;border-radius:7px}
+video.post-media{aspect-ratio:auto;border-radius:7px}
+.post-actions{padding:10px 16px;display:flex;align-items:center;justify-content:space-between;}
 .action-group{display:flex;gap:14px}
 .action-btn{background:none;border:none;cursor:pointer;padding:4px;display:flex;align-items:center;gap:5px;color:var(--text-secondary);font-size:13px;font-weight:500}
 .action-btn svg{width:22px;height:22px;stroke:var(--text-secondary);fill:none;stroke-width:2;transition:all .2s}
@@ -569,6 +716,26 @@ textarea{resize:vertical;min-height:100px}
 @keyframes spin{to{transform:rotate(360deg)}}
 .hidden{display:none !important}
 /* Sliding chat panel */
+/* TikTok-style video container */
+.video-container{position:relative;width:100%;border-radius:7px;overflow:hidden;background:#000}
+.video-container video{width:100%;display:block;object-fit:cover}
+/* Center play button overlay */
+.play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);opacity:0;transition:opacity 0.2s;pointer-events:none}
+.video-container.paused .play-overlay{opacity:1}
+.play-btn{width:64px;height:64px;border:3px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.4);backdrop-filter:blur(4px)}
+.play-btn::after{content:'';width:0;height:0;border-left:20px solid #fff;border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:4px}
+.video-container.paused .play-btn::after{content:'';border-left:20px solid #fff;border-top:12px solid transparent;border-bottom:12px solid transparent}
+/* Bottom timeline only */
+.video-controls{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,0.2);cursor:pointer;opacity:0;transition:opacity 0.3s}
+.video-container:hover .video-controls{opacity:1}
+.video-progress{height:100%;background:#fff;width:0%;position:relative}
+.video-progress::after{content:'';position:absolute;right:-6px;top:50%;transform:translateY(-50%);width:12px;height:12px;background:#fff;border-radius:50%;opacity:0;transition:opacity 0.2s}
+.video-container:hover .video-progress::after{opacity:1}
+/* Hide default controls */
+video::-webkit-media-controls{display:none !important}
+video::-webkit-media-controls-enclosure{display:none !important}
+video::-webkit-media-controls-panel{display:none !important}
+
 #chatPanel{position:fixed;top:0;left:50%;transform:translateX(-50%) translateX(100%);width:100%;max-width:480px;height:100vh;background:var(--bg);z-index:3500;display:flex;flex-direction:column;border-left:1px solid var(--border);border-right:1px solid var(--border);transition:transform .3s ease}
 #chatPanel.open{transform:translateX(-50%)}
 .chat-messages-area{flex:1;overflow-y:auto;padding:12px 16px;display:flex;flex-direction:column;gap:10px}
@@ -591,10 +758,25 @@ textarea{resize:vertical;min-height:100px}
 .tag-chip{background:var(--elevated);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:12px;display:inline-flex;align-items:center;gap:6px}
 .tag-chip button{background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:14px;line-height:1;padding:0}
 /* Suggested follow */
-.suggest-card{display:inline-flex;flex-direction:column;align-items:center;gap:6px;min-width:72px;cursor:pointer}
-.suggest-card img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:1px solid var(--border)}
-.suggest-card span{font-size:11px;color:var(--text-secondary);text-align:center;max-width:68px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.suggest-follow-btn{font-size:11px;font-weight:600;color:var(--bg);background:var(--text);border:none;padding:3px 10px;border-radius:10px;cursor:pointer}
+/* Instagram-style suggestions */
+.suggestions-wrapper{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 0}
+.suggestions-header{display:flex;align-items:center;justify-content:space-between;padding:0 16px;margin-bottom:12px;font-size:14px;font-weight:600}
+.suggestions-scroll{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 16px;scrollbar-width:none}
+.suggestions-scroll::-webkit-scrollbar{display:none}
+.suggest-card{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:80px;scroll-snap-align:start;cursor:pointer;padding:8px;border-radius:12px;transition:background 0.2s}
+.suggest-card:active{background:var(--elevated)}
+.suggest-card .avatar-wrapper{position:relative;width:72px;height:72px;border-radius:50%;background:linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);padding:2px}
+.suggest-card img{width:68px;height:68px;border-radius:50%;object-fit:cover;border:2px solid var(--bg);background:var(--bg)}
+.suggest-card .username{font-size:13px;font-weight:600;color:var(--text);max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.suggest-card .meta{font-size:11px;color:var(--text-secondary);max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.suggest-follow-btn{font-size:12px;font-weight:700;color:#fff;background:#0095f6;border:none;padding:6px 16px;border-radius:8px;cursor:pointer;margin-top:4px;transition:background 0.2s}
+.suggest-follow-btn:hover{background:#1877f2}
+.suggest-follow-btn.following{background:transparent;color:var(--text);border:1px solid var(--border)}
+.read-receipt{opacity:0.6}
+.read-receipt.read{opacity:1}
+.msg-bubble.msg-outgoing{display:flex;align-items:center;gap:4px}
+
+
 /* Page header util */
 .page-hdr{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
 .page-hdr-title{font-weight:700;font-size:16px}
@@ -603,7 +785,7 @@ textarea{resize:vertical;min-height:100px}
 
 <div id="app" style="display:none;">
   <!-- Loading -->
-  <div id="loadingScreen" class="loading-overlay">
+  <div id="loadingScreen" class="loading-overlay" style="display:none">
     <div class="spinner"></div>
     <div style="font-family:var(--font-display);font-weight:700;font-size:18px;">CollegeTrends</div>
   </div>
@@ -612,7 +794,7 @@ textarea{resize:vertical;min-height:100px}
   <div class="drawer-overlay" id="drawerOverlay" onclick="toggleDrawer()"></div>
   <div class="drawer" id="drawer">
     <div class="drawer-header">
-      <div style="font-family:var(--font-display);font-weight:800;font-size:22px;">Menu</div>
+      <div style="font-family:var(--font-display);font-weight:800;font-size:22px;">CollegeTrends</div>
       <div id="drawerUsername" style="color:var(--text-secondary);font-size:13px;margin-top:4px;">@username</div>
     </div>
     
@@ -675,6 +857,11 @@ textarea{resize:vertical;min-height:100px}
       </div>
       <div id="feedContainer">
         <div class="skeleton-post">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;"><div class="skeleton skeleton-avatar"></div><div style="flex:1;"><div class="skeleton skeleton-text" style="width:100px;"></div><div class="skeleton skeleton-text" style="width:70px;height:10px;"></div></div></div>
+          <div class="skeleton skeleton-media"></div>
+          <div style="margin-top:12px;"><div class="skeleton skeleton-text" style="width:160px;"></div></div>
+        </div>
+                <div class="skeleton-post">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;"><div class="skeleton skeleton-avatar"></div><div style="flex:1;"><div class="skeleton skeleton-text" style="width:100px;"></div><div class="skeleton skeleton-text" style="width:70px;height:10px;"></div></div></div>
           <div class="skeleton skeleton-media"></div>
           <div style="margin-top:12px;"><div class="skeleton skeleton-text" style="width:160px;"></div></div>
@@ -792,10 +979,7 @@ textarea{resize:vertical;min-height:100px}
         <input type="file" id="fileInput" accept="image/*,video/*" style="display:none;" onchange="handleFileSelect(event)">
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="1.5" style="margin:0 auto 10px;display:block;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
         <div style="color:var(--text-secondary);font-size:13px;">Tap to upload photo or video</div>
-        <div id="filePreview" style="margin-top:10px;display:none;">
-          <img id="previewImg" style="max-width:100%;border-radius:8px;max-height:200px;object-fit:cover;">
-        </div>
-      </div>
+<div id="filePreview" style="margin-top:10px;display:none;"></div>      </div>
       <textarea id="postCaption" placeholder="Write a caption…" oninput="validatePost()"></textarea>
       <div style="display:flex;gap:8px;margin-bottom:8px;">
         <input type="text" id="tagInput" placeholder="Add tag (max 5)" style="flex:1;margin:0;" maxlength="25" onkeydown="if(event.key==='Enter'){event.preventDefault();addTag()}">
@@ -945,6 +1129,92 @@ async function api(path, method = 'GET', body = null, isForm = false) {
     return res;
 }
 
+// ─────────────────────────────────────────────────────────────────
+// KEEP-ALIVE PING (Prevents free tier server sleep)
+// ─────────────────────────────────────────────────────────────────
+
+let keepAliveTimer = null;
+let isKeepAliveRunning = false;
+
+function startKeepAlivePing(intervalMinutes = 5) {
+    // Prevent multiple timers
+    if (isKeepAliveRunning) return;
+    
+    // Clear any existing timer
+    if (keepAliveTimer) clearInterval(keepAliveTimer);
+    
+    isKeepAliveRunning = true;
+    
+    // Ping immediately on start
+    pingBackend();
+    
+    // Set up recurring ping
+    const intervalMs = intervalMinutes * 60 * 1000;
+    keepAliveTimer = setInterval(pingBackend, intervalMs);
+    
+    console.log(`[KeepAlive] Started pinging every ${intervalMinutes} minutes`);
+}
+
+function stopKeepAlivePing() {
+    if (keepAliveTimer) {
+        clearInterval(keepAliveTimer);
+        keepAliveTimer = null;
+    }
+    isKeepAliveRunning = false;
+    console.log('[KeepAlive] Stopped');
+}
+
+async function pingBackend() {
+    const startTime = performance.now();
+    try {
+        // Use health check endpoint - lightweight, no auth needed
+        const res = await fetch(`${API_BASE}/health`, { 
+            method: 'GET',
+            // Short timeout so it doesn't hang
+            signal: AbortSignal.timeout(10000) 
+        });
+        
+        const duration = Math.round(performance.now() - startTime);
+        
+        if (res.ok) {
+            console.log(`[KeepAlive] Ping successful (${duration}ms)`);
+        } else {
+            console.warn(`[KeepAlive] Ping returned ${res.status}`);
+        }
+    } catch (err) {
+        // Silently fail - don't spam console on every error
+        if (err.name !== 'AbortError') {
+            console.error('[KeepAlive] Ping failed:', err.message);
+        }
+    }
+}
+
+// ─────────────────────────────────────────────────────────────────
+// INIT - START PINGING IMMEDIATELY ON PAGE LOAD
+// ─────────────────────────────────────────────────────────────────
+
+// Start keep-alive as soon as DOM is ready (for landing page visitors)
+document.addEventListener('DOMContentLoaded', () => {
+    // Start pinging immediately - don't wait for login
+    // This wakes up the server for all visitors
+    startKeepAlivePing(5); // 5 minutes
+    
+    // If user is logged in, load app data (your existing code)
+    if (localStorage.getItem('ct_token')) {
+        showApp();
+    }
+});
+
+// Stop pinging when user logs out (optional - or keep running)
+function logout() {
+    clearInterval(msgPollTimer);
+    localStorage.removeItem('ct_token');
+    currentUser = null;
+    // Keep ping running even after logout so server stays warm
+    // Or uncomment below to stop:
+    // stopKeepAlivePing();
+    showLanding();
+}
 // ─────────────────────────────────────────────────────────────────
 // UTILITIES
 // ─────────────────────────────────────────────────────────────────
@@ -1121,11 +1391,72 @@ async function loadFeed() {
             return;
         }
         el.innerHTML = posts.map(renderPostCard).join('');
-    } catch {
+        
+        // Initialize video autoplay observer after rendering
+        setTimeout(initVideoAutoplay, 100);
+    } catch (err) {
+        console.error('Feed load error:', err);
         el.innerHTML = '<div class="empty-state"><p>Failed to load feed. Pull to refresh.</p></div>';
     }
+}// ─────────────────────────────────────────────────────────────────
+// SPECIAL TAG DETECTION
+// ─────────────────────────────────────────────────────────────────
+function addSpecialTag(tagType) {
+    const specialConfig = SPECIAL_TAGS[tagType];
+    if (!specialConfig) return;
+    
+    // Remove any existing special tags (only one allowed)
+    postTags = postTags.filter(t => !SPECIAL_TAGS.hasOwnProperty(String(t).toLowerCase().trim()));
+    
+    // Add the new special tag
+    postTags.push(tagType);
+    renderTagList();
+    
+    showToast(`${specialConfig.icon} Added #${tagType} tag`);
+}
+const SPECIAL_TAGS = {
+    'research': { 
+        color: '#00d084', 
+        bg: 'rgba(0,208,132,0.08)', 
+        icon: '🔬', 
+        label: 'Research',
+        border: '#00d084',
+        gradient: 'linear-gradient(135deg, rgba(0,208,132,0.1) 0%, transparent 100%)'
+    },
+    'event': { 
+        color: '#f09433', 
+        bg: 'rgba(240,148,51,0.08)', 
+        icon: '📅', 
+        label: 'Event',
+        border: '#f09433',
+        gradient: 'linear-gradient(135deg, rgba(240,148,51,0.1) 0%, transparent 100%)'
+    },
+    'task': { 
+        color: '#0095f6', 
+        bg: 'rgba(0,149,246,0.08)', 
+        icon: '✅', 
+        label: 'Task',
+        border: '#0095f6',
+        gradient: 'linear-gradient(135deg, rgba(0,149,246,0.1) 0%, transparent 100%)'
+    }
+};
+
+function detectSpecialTag(tags) {
+    if (!tags || !Array.isArray(tags)) return null;
+    const normalized = tags.map(t => String(t).toLowerCase().trim());
+    for (const [key, config] of Object.entries(SPECIAL_TAGS)) {
+        if (normalized.includes(key)) return { type: key, ...config };
+    }
+    return null;
 }
 
+function getSpecialTagStyles(special) {
+    if (!special) return '';
+    return `
+        border-left: 3px solid ${special.border};
+        background: ${special.gradient};
+    `;
+}
 function renderPostCard(post) {
     const isOwn = currentUser && post.user_id === currentUser.id;
     const likedClass   = post.user_liked    ? 'liked'      : '';
@@ -1134,29 +1465,77 @@ function renderPostCard(post) {
     const voteDown     = post.user_vote === 'down' ? 'voted-down' : '';
     const voteCount    = (post.upvotes_count || 0) - (post.downvotes_count || 0);
     const avatar       = post.user_avatar || `https://api.dicebear.com/7.x/initials/svg?seed=${esc(post.username)}`;
-    const tagsHtml     = (post.tags || []).map(t => `<span class="tag">${esc(t)}</span>`).join('');
-    const mediaHtml    = post.media_url
-        ? (post.media_type === 'video'
-            ? `<video class="post-media" controls onclick="event.stopPropagation()"><source src="${esc(post.media_url)}"></video>`
-            : `<img class="post-media" src="${esc(post.media_url)}" loading="lazy" onclick="openPost(${post.id})">`)
+    
+    // Detect special tag type
+    const special = detectSpecialTag(post.tags);
+    const specialStyles = getSpecialTagStyles(special);
+    
+    // Build special badge if detected
+    const specialBadge = special 
+        ? `<div class="special-badge" style="
+            background: ${special.bg};
+            color: ${special.color};
+            border: 1px solid ${special.border};
+            padding: 6px 14px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 10px;
+            border-radius: 20px;
+            width: fit-content;
+           ">
+             ${special.icon} ${special.label}
+           </div>` 
         : '';
+    
+    // Filter out special tags from regular tag display (they get the badge instead)
+    const regularTags = (post.tags || []).filter(t => {
+        const lower = String(t).toLowerCase().trim();
+        return !SPECIAL_TAGS.hasOwnProperty(lower);
+    });
+    
+    const tagsHtml = regularTags.map(t => `<span class="tag">${esc(t)}</span>`).join('');
+    
+    const mediaHtml = post.media_url
+        ? (post.media_type === 'video'
+            ? `<div class="video-container" onclick="toggleVideoPlayback(this)" data-playing="false" style="border-radius: 12px; overflow: hidden;">
+                 <video class="post-media" loop playsinline preload="metadata" onloadedmetadata="this.currentTime=0.07" ontimeupdate="updateVideoProgress(this)">
+                   <source src="${esc(post.media_url)}">
+                 </video>
+                 <div class="play-overlay"><div class="play-btn"></div></div>
+                 <div class="video-controls" onclick="event.stopPropagation()">
+                   <div class="video-progress" onclick="seekVideo(event, this)"></div>
+                 </div>
+               </div>`
+            : `<img class="post-media" src="${esc(post.media_url)}" loading="lazy" onclick="openPost(${post.id})" style="border-radius: 12px;">`)
+        : '';
+
     const commentPreview = post.latest_comment
         ? `<div class="post-comments-preview" onclick="openPost(${post.id})"><strong>${esc(post.latest_comment.username)}</strong> ${esc(post.latest_comment.text)}</div>`
         : '';
 
-    return `<div class="post-card" id="post-${post.id}">
+    return `<div class="post-card" id="post-${post.id}" style="${specialStyles}">
       <div class="post-header">
         <div class="post-user" onclick="openUserPanel(${post.user_id})">
           <img class="avatar" src="${esc(avatar)}" onerror="this.src='https://i.pravatar.cc/40'">
           <div class="user-info">
             <span class="username">${esc(post.username)}${post.verified ? ' <span class="verified">✓</span>' : ''}</span>
-            <span class="meta">${esc(post.university||'')}${post.university && post.course?' · ':''}${esc(post.course||'')} · ${timeAgo(post.created_at)}</span>
+            <span class="meta">${esc(post.university||'')}${post.university && post.course?' · ':''}${esc(post.course||'')} · ${formatFollowers(post.followers_count||0)} followers · ${timeAgo(post.created_at)}</span>
           </div>
         </div>
         ${isOwn ? `<button class="more-btn" onclick="deletePost(${post.id})">⋯</button>` : ''}
       </div>
+      
+      ${specialBadge}
+      
       ${post.caption ? `<div class="post-content"><div class="caption">${esc(post.caption)}</div>${tagsHtml ? `<div class="tags">${tagsHtml}</div>` : ''}</div>` : (tagsHtml ? `<div class="post-content"><div class="tags">${tagsHtml}</div></div>` : '')}
+      
       ${mediaHtml}
+      
       <div class="post-actions">
         <div class="action-group">
           <button class="action-btn ${likedClass}" onclick="toggleLike(${post.id},this)" title="Like">
@@ -1185,7 +1564,6 @@ function renderPostCard(post) {
       ${commentPreview}
     </div>`;
 }
-
 async function toggleLike(postId, btn) {
     const isLiked = btn.classList.contains('liked');
     btn.classList.toggle('liked');
@@ -1256,11 +1634,25 @@ async function loadSuggestions() {
         const sec = document.getElementById('suggestedSection');
         const list = document.getElementById('suggestedList');
         sec.style.display = 'block';
-        list.innerHTML = users.map(u => `
+        sec.className = 'suggestions-wrapper';
+        sec.innerHTML = `
+            <div class="suggestions-header">
+                <span>Suggested for you</span>
+                <span style="color:var(--text-secondary);font-size:13px;cursor:pointer;" onclick="navigateTo('search')">See All</span>
+            </div>
+            <div class="suggestions-scroll" id="suggestedList"></div>
+        `;
+        
+        document.getElementById('suggestedList').innerHTML = users.map(u => `
           <div class="suggest-card" onclick="openUserPanel(${u.id})">
-            <img src="${u.avatar || `https://api.dicebear.com/7.x/initials/svg?seed=${esc(u.username)}`}" onerror="this.src='https://i.pravatar.cc/52'" id="sug-img-${u.id}">
-            <span>@${esc(u.username)}</span>
-            <button class="suggest-follow-btn" id="sug-btn-${u.id}" onclick="event.stopPropagation();followSuggested(${u.id},this)">Follow</button>
+            <div class="avatar-wrapper">
+                <img src="${u.avatar || `https://api.dicebear.com/7.x/initials/svg?seed=${esc(u.username)}`}" onerror="this.src='https://i.pravatar.cc/72'">
+            </div>
+            <span class="username">@${esc(u.username)}</span>
+            <span class="meta">${esc(u.university||'Popular')}</span>
+            <button class="suggest-follow-btn ${u.following?'following':''}" id="sug-btn-${u.id}" onclick="event.stopPropagation();followSuggested(${u.id},this)">
+                ${u.following?'Following':'Follow'}
+            </button>
           </div>
         `).join('');
     } catch { /* silent */ }
@@ -1408,81 +1800,219 @@ function openCreateModal() {
     document.getElementById('tagList').innerHTML = '';
     document.getElementById('postCaption').value = '';
     document.getElementById('fileInput').value = '';
-    document.getElementById('filePreview').style.display = 'none';
+    
+    // Reset preview properly
+    const previewContainer = document.getElementById('filePreview');
+    previewContainer.style.display = 'none';
+    previewContainer.innerHTML = '<img id="previewImg" style="max-width:100%;border-radius:8px;max-height:200px;object-fit:cover;">';
+    
     document.getElementById('shareBtn').disabled = true;
     document.getElementById('shareBtn').style.opacity = '.4';
+    
+    // Add post type hints if not already present
+    const modalBody = document.querySelector('#createModal .modal-body');
+    let hintsSection = document.getElementById('postTypeHints');
+    
+    if (!hintsSection) {
+        const hintsHtml = `
+        <div id="postTypeHints" style="margin-bottom:14px;padding:14px;background:var(--elevated);border-radius:12px;border:1px solid var(--border);">
+            <div style="font-size:12px;font-weight:600;color:var(--text-secondary);margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+                <span>💡</span> Post Type Tags
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+                <button type="button" onclick="addSpecialTag('research')" style="display:flex;align-items:center;gap:6px;padding:8px 12px;background:rgba(0,208,132,0.1);color:#00d084;border:1px solid rgba(0,208,132,0.3);border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s;">
+                    🔬 #research
+                </button>
+                <button type="button" onclick="addSpecialTag('event')" style="display:flex;align-items:center;gap:6px;padding:8px 12px;background:rgba(240,148,51,0.1);color:#f09433;border:1px solid rgba(240,148,51,0.3);border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s;">
+                    📅 #event
+                </button>
+                <button type="button" onclick="addSpecialTag('task')" style="display:flex;align-items:center;gap:6px;padding:8px 12px;background:rgba(0,149,246,0.1);color:#0095f6;border:1px solid rgba(0,149,246,0.3);border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s;">
+                    ✅ #task
+                </button>
+            </div>
+            <div style="font-size:11px;color:var(--text-secondary);line-height:1.5;">
+                <strong>Research:</strong> Academic papers, studies, findings, surveys<br>
+                <strong>Event:</strong> Campus events(Virtual & Physical), meetups, deadlines, programmes<br>
+                <strong>Paid Task: </strong>projects, to-dos
+            </div>
+        </div>`;
+        modalBody.insertAdjacentHTML('afterbegin', hintsHtml);
+    }
+    
     document.getElementById('createModal').classList.add('active');
 }
-
 function closeCreateModal() {
     document.getElementById('createModal').classList.remove('active');
+    // Clean up hints section so it refreshes next time
+    const hints = document.getElementById('postTypeHints');
+    if (hints) hints.remove();
 }
-
 function handleFileSelect(e) {
     const file = e.target.files[0];
     if (!file) return;
-    document.getElementById('filePreview').style.display = 'block';
-    document.getElementById('previewImg').src = URL.createObjectURL(file);
+    
+    const previewContainer = document.getElementById('filePreview');
+    const previewImg = document.getElementById('previewImg');
+    
+    // Create object URL for preview
+    const objectUrl = URL.createObjectURL(file);
+    
+    // Check if it's video or image
+    if (file.type.startsWith('video/')) {
+        // Replace img with video element
+        previewContainer.innerHTML = `
+            <video id="previewVideo" controls style="max-width:100%;border-radius:8px;max-height:200px;">
+                <source src="${objectUrl}" type="${file.type}">
+            </video>
+        `;
+    } else {
+        // Image preview
+        previewContainer.innerHTML = `
+            <img id="previewImg" style="max-width:100%;border-radius:8px;max-height:200px;object-fit:cover;" src="${objectUrl}">
+        `;
+    }
+    
+    previewContainer.style.display = 'block';
     validatePost();
 }
-
 function addTag() {
     const input = document.getElementById('tagInput');
-    const val = input.value.trim().replace(/^#/, '').replace(/\s+/g, '_');
-    if (!val || postTags.length >= 5 || postTags.includes(val)) { input.value = ''; return; }
+    const val = input.value.trim().replace(/^#/, '').replace(/\s+/g, '_').toLowerCase();
+    
+    if (!val) { 
+        input.value = ''; 
+        return; 
+    }
+    
+    if (postTags.length >= 5) { 
+        showToast('Maximum 5 tags allowed'); 
+        input.value = ''; 
+        return; 
+    }
+    
+    if (postTags.includes(val)) { 
+        showToast('Tag already added'); 
+        input.value = ''; 
+        return; 
+    }
+    
+    // Check if trying to add a special tag manually (redirect to special function)
+    if (SPECIAL_TAGS.hasOwnProperty(val)) {
+        addSpecialTag(val);
+        input.value = '';
+        return;
+    }
+    
     postTags.push(val);
     input.value = '';
     renderTagList();
+    validatePost();
 }
-
 function removeTag(tag) {
     postTags = postTags.filter(t => t !== tag);
     renderTagList();
+    validatePost();
 }
-
 function renderTagList() {
-    document.getElementById('tagList').innerHTML = postTags.map(t =>
-        `<div class="tag-chip">#${esc(t)}<button onclick="removeTag('${esc(t)}')">×</button></div>`
-    ).join('');
+    const container = document.getElementById('tagList');
+    if (!container) return;
+    
+    container.innerHTML = postTags.map(t => {
+        const lowerT = String(t).toLowerCase().trim();
+        const isSpecial = SPECIAL_TAGS.hasOwnProperty(lowerT);
+        const config = isSpecial ? SPECIAL_TAGS[lowerT] : null;
+        
+        if (isSpecial && config) {
+            return `<div class="tag-chip" style="
+                background: ${config.bg};
+                border: 1px solid ${config.border};
+                color: ${config.color};
+                font-weight: 700;
+            ">
+                ${config.icon} #${esc(t)}
+                <button onclick="removeTag('${esc(t)}')" style="color:${config.color};opacity:0.7;">×</button>
+            </div>`;
+        }
+        
+        return `<div class="tag-chip">#${esc(t)}<button onclick="removeTag('${esc(t)}')">×</button></div>`;
+    }).join('');
 }
-
 function validatePost() {
     const hasCaption = document.getElementById('postCaption').value.trim().length > 0;
     const hasFile = document.getElementById('fileInput').files.length > 0;
-    const ok = hasCaption || hasFile;
-    document.getElementById('shareBtn').disabled = !ok;
-    document.getElementById('shareBtn').style.opacity = ok ? '1' : '.4';
+    const hasSpecialTag = postTags.some(t => SPECIAL_TAGS.hasOwnProperty(String(t).toLowerCase().trim()));
+    
+    // Require caption for special posts (research/event/task need context)
+    const ok = (hasCaption || hasFile) && (!hasSpecialTag || hasCaption);
+    
+    const shareBtn = document.getElementById('shareBtn');
+    shareBtn.disabled = !ok;
+    shareBtn.style.opacity = ok ? '1' : '.4';
+    
+    // Update hint if special tag selected but no caption
+    if (hasSpecialTag && !hasCaption) {
+        const captionInput = document.getElementById('postCaption');
+        captionInput.placeholder = "Required: Describe your research, event, or task...";
+        captionInput.style.borderColor = '#f09433';
+    } else {
+        const captionInput = document.getElementById('postCaption');
+        captionInput.placeholder = "Write a caption…";
+        captionInput.style.borderColor = 'var(--border)';
+    }
 }
-
 async function submitPost() {
     const btn = document.getElementById('shareBtn');
+    const originalText = btn.textContent;
     btn.textContent = 'Sharing…';
     btn.disabled = true;
+
+    // Check for special tag requirements
+    const hasSpecialTag = postTags.some(t => SPECIAL_TAGS.hasOwnProperty(String(t).toLowerCase().trim()));
+    const caption = document.getElementById('postCaption').value.trim();
+    
+    if (hasSpecialTag && !caption) {
+        showToast('Research/Event/Task posts require a description');
+        btn.textContent = originalText;
+        btn.disabled = false;
+        return;
+    }
 
     const fd = new FormData();
     const file = document.getElementById('fileInput').files[0];
     if (file) fd.append('media', file);
-    fd.append('caption', document.getElementById('postCaption').value);
+    fd.append('caption', caption);
     fd.append('tags', JSON.stringify(postTags));
 
     try {
         const res = await api('/api/posts', 'POST', fd, true);
         if (res.ok) {
+            const data = await res.json();
             closeCreateModal();
+            
+            // Show success message based on post type
+            const specialType = postTags.find(t => SPECIAL_TAGS.hasOwnProperty(String(t).toLowerCase().trim()));
+            if (specialType) {
+                const config = SPECIAL_TAGS[specialType.toLowerCase()];
+                showToast(`${config.icon} ${config.label} post shared!`);
+            } else {
+                showToast('Post shared!');
+            }
+            
             loadFeed();
             navigateTo('home');
-            showToast('Post shared!');
         } else {
             const d = await res.json();
             showToast(d.error || 'Failed to post');
+            btn.textContent = originalText;
+            btn.disabled = false;
         }
-    } catch {
-        showToast('Failed to create post');
+    } catch (err) {
+        console.error('Post error:', err);
+        showToast('Failed to create post - check connection');
+        btn.textContent = originalText;
+        btn.disabled = false;
     }
-    btn.textContent = 'Share';
-    btn.disabled = false;
 }
-
 // ─────────────────────────────────────────────────────────────────
 // SEARCH
 // ─────────────────────────────────────────────────────────────────
@@ -1689,13 +2219,17 @@ function renderMessages(msgs) {
     if (!msgs.length) { el.innerHTML = '<div class="empty-state"><p>Say hi! 👋</p></div>'; return; }
     el.innerHTML = msgs.map(m => {
         const sent = currentUser && m.sender_id === currentUser.id;
+        const readStatus = sent ? `<svg class="read-receipt ${m.is_read?'read':''}" viewBox="0 0 16 15" fill="none" style="width:14px;height:14px;margin-left:4px;display:inline-block;vertical-align:middle"><path d="M1 7.5L5 11.5L15 1.5" stroke="${m.is_read?'#00d084':'#666'}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 11.5L15 4.5" stroke="${m.is_read?'#00d084':'#666'}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="${m.is_read?'opacity:1':'opacity:0'}"/></svg>` : '';
         return `<div>
-          <div class="msg-bubble ${sent ? 'msg-outgoing' : 'msg-incoming'}">${esc(m.content)}</div>
+          <div class="msg-bubble ${sent ? 'msg-outgoing' : 'msg-incoming'}">${esc(m.content)}${readStatus}</div>
           <div class="msg-time ${sent?'':'left'}">${timeAgo(m.created_at)}</div>
         </div>`;
     }).join('');
     el.scrollTop = el.scrollHeight;
 }
+
+
+
 
 let lastMsgCount = 0;
 async function pollMessages(convId) {
@@ -2000,7 +2534,7 @@ window.addEventListener('load', () => {
     setTimeout(() => {
         const loader = document.getElementById('loader');
         if (loader) loader.classList.add('done');
-    }, 1500);
+    }, 2500);
 });
 
 window.addEventListener('scroll', () => {
@@ -2040,25 +2574,102 @@ function toggleFAQ(btn) {
     document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
     if (!wasOpen) item.classList.add('open');
 }
-
+function getRandomString(strings) {
+  return strings[Math.floor(Math.random() * strings.length)];
+}
 // Typewriter
-const words = ['Students.','Educators.','Researchers.','Dreamers.','The Next Generation.'];
-let wi=0,ci=0,del=false;
+const words = [
+  'Students.',
+  'People Who Moved Across the World Just to Sleep in Lectures.',
+  'Those Who Chose Their University Based on the Campus Aesthetic.',
+  'International Students Who Packed 5 Suitcases and Still Forgot Something.',
+  'People Who Moved to a New Country and Immediately Got Homesick for the Food.',
+  'Those Currently Converting Currency and Crying.',
+  'Students Who Have Submitted an Assignment in the Wrong Timezone.',
+  'People Who Said "I\'ll Travel Europe on a Student Budget" and Deeply Regret It.',
+  'Those Who Picked a Major Their Parents Chose and Are Now in Therapy.',
+  'Students Who Have Attended One Lecture This Semester and Feel Fine About It.',
+  'People Who Googled "Is a 2.7 GPA Really That Bad".',
+  'Those Who Moved 10,000 Miles Just to Study Something They Could\'ve Googled.',
+  'International Students Still Figuring Out the Local Accent.',
+  'People Who Thought University Would Be Like the Movies.',
+  'Those Who Have Three Assignments Due and Are Currently on CollegeTrends.',
+  'Students Whose Thesis Advisor Has Gone Ghost.',
+  'People Who Survive Entirely on Coffee and Existential Dread.',
+  'Those Who Have Rewarded Themselves Before Starting the Work.',
+  'Students Currently in the Wrong Lecture and Too Scared to Leave.',
+  'People Who Chose a University for the Weather and Were Lied To.',
+  'Those Who Became Best Friends With Someone They Can\'t Even Pronounce the Name Of.',
+  'Students Who Have Fallen Asleep in a Library Across Three Different Continents.',
+  'People Who Thought Gap Year Was for Rest and Ended Up More Confused.',
+  'Those Who Have Submitted an Assignment at 11:59 PM in Four Different Countries.',
+  'Students Everywhere Who Just Need One Good Nap.',
+  'Every Broke, Brilliant, Beautiful Mind on Planet Earth.','People Who Have Never Once Read a Syllabus.',
+  'Those Who Moved Continents and Still Can\'t Wake Up for 8am.',
+  'International Students Who Nodded in Class and Understood Zero Percent.',
+  'People Who Listed "Fluent in English" on Their Application and Are Now Suffering.',
+  'Those Who Came for a Degree and Left With Trauma and a Best Friend.',
+  'Students Who Have Asked "Will This Be in the Exam" in Seven Different Languages.',
+  'People Who Flew 12 Hours to Sit in the Back Row of a Lecture.',
+  'Those Who Have Cried in a Bathroom on at Least Four Different Campuses.',
+  'Students Who Treat Office Hours Like a Myth.',
+  'People Who Pay $40,000 a Year in Tuition and Eat Gas Station Sushi.',
+  'Those Who Have Pretended to Understand an Accent for an Entire Semester.',
+  'Students Who Joined a Study Group That Has Never Once Studied.',
+  'People Currently Watching Netflix 11 Hours Before Their Final.',
+  'Those Who Have Accidentally Called Their Professor "Mum".',
+  'Students Who Write the Introduction Last and the Bibliography Never.',
+  'People Who Have Googled "Do I Really Need a Degree" at 3am.',
+  'Those Who Have Six Browser Tabs Open and None of Them Are Relevant.',
+  'Students Who Told Their Parents They\'re Thriving and Are Absolutely Not.',
+  'People Who Have Made Eye Contact With a Professor and Immediately Looked Away.',
+  'Those Who Have Submitted a Draft as the Final and Passed.',
+  'Students Who Have Befriended Someone Purely for Their Lecture Notes.',
+  'People Who Chose a Minor and Cannot Explain Why.',
+  'Those Who Have Stress-Eaten an Entire Country\'s Cuisine During Finals.',
+  'Students Who Have Set 14 Alarms and Slept Through All of Them.',
+  'People Who Are One Email Away From Dropping Out.',
+  'Every Overworked, Underfed, Surprisingly Resilient Human on Earth.',
+];
+let ci = 0, del = false, currentWord = "";
+
+function getRandomWord(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
 function tw() {
     const twEl = document.getElementById('twEl');
     if (!twEl) return;
-    const w = words[wi];
+    
+    // Pick new random word at start of each cycle
+    if (ci === 0 && !del) {
+        currentWord = getRandomWord(words);
+    }
+    
     if (!del) {
-        twEl.textContent = w.slice(0,++ci);
-        if (ci === w.length) { del=true; setTimeout(tw,1900); return; }
-        setTimeout(tw,85);
+        // Typing forward
+        twEl.textContent = currentWord.slice(0, ++ci);
+        if (ci === currentWord.length) {
+            del = true;
+            setTimeout(tw, 1900); // Pause at full word
+            return;
+        }
+        setTimeout(tw, 85); // Typing speed
     } else {
-        twEl.textContent = w.slice(0,--ci);
-        if (ci === 0) { del=false; wi=(wi+1)%words.length; setTimeout(tw,400); return; }
-        setTimeout(tw,42);
+        // Deleting backward
+        twEl.textContent = currentWord.slice(0, --ci);
+        if (ci === 0) {
+            del = false; // Done deleting, will pick new random word next tick
+            setTimeout(tw, 400); // Pause before next word
+            return;
+        }
+        setTimeout(tw, 42); // Deleting speed
     }
 }
+
 setTimeout(tw, 3000);
+
+
 
 // Scroll reveal
 const ro = new IntersectionObserver(entries => {
@@ -2103,6 +2714,92 @@ document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('ct_token')) showApp();
     else showLanding();
 });
+function toggleVideoPlayback(container){
+    const video = container.querySelector('video');
+    const isPlaying = container.getAttribute('data-playing') === 'true';
+    
+    // Pause all other videos first (only one plays at a time)
+    document.querySelectorAll('.video-container[data-playing="true"]').forEach(c => {
+        if(c !== container){
+            const v = c.querySelector('video');
+            v.pause();
+            c.setAttribute('data-playing', 'false');
+            c.classList.add('paused');
+        }
+    });
+    
+    if(isPlaying){
+        video.pause();
+        container.setAttribute('data-playing', 'false');
+        container.classList.add('paused');
+    } else {
+        video.play();
+        container.setAttribute('data-playing', 'true');
+        container.classList.remove('paused');
+    }
+}
+
+function updateVideoProgress(video){
+    const progress = video.parentElement.querySelector('.video-progress');
+    if(progress && video.duration){
+        const pct = (video.currentTime / video.duration) * 100;
+        progress.style.width = pct + '%';
+    }
+}
+
+function seekVideo(event, progressBar){
+    event.stopPropagation();
+    const video = progressBar.closest('.video-container').querySelector('video');
+    const rect = progressBar.getBoundingClientRect();
+    const pct = (event.clientX - rect.left) / rect.width;
+    if(video.duration){
+        video.currentTime = pct * video.duration;
+    }
+}
+
+// Auto-play videos on scroll (Intersection Observer)
+let currentPlayingVideo = null;
+const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        const container = entry.target;
+        const video = container.querySelector('video');
+        
+        if(entry.isIntersecting && entry.intersectionRatio > 0.7){
+            // Pause current if different
+            if(currentPlayingVideo && currentPlayingVideo !== video){
+                currentPlayingVideo.pause();
+                currentPlayingVideo.closest('.video-container').setAttribute('data-playing', 'false');
+                currentPlayingVideo.closest('.video-container').classList.add('paused');
+            }
+            // Play this one
+            video.play().then(() => {
+                currentPlayingVideo = video;
+                container.setAttribute('data-playing', 'true');
+                container.classList.remove('paused');
+            }).catch(e => {/* autoplay blocked */});
+        } else if(!entry.isIntersecting && video === currentPlayingVideo){
+            video.pause();
+            container.setAttribute('data-playing', 'false');
+            container.classList.add('paused');
+            if(currentPlayingVideo === video) currentPlayingVideo = null;
+        }
+    });
+}, {threshold: [0, 0.5, 0.7, 1]});
+
+// Observe videos when loaded
+setInterval(() => {
+    document.querySelectorAll('.video-container:not([data-observed])').forEach(c => {
+        c.setAttribute('data-observed', 'true');
+        c.classList.add('paused');
+        videoObserver.observe(c);
+    });
+}, 1000);
+function formatFollowers(num){
+    if(num >= 1000000) return (num/1000000).toFixed(1) + 'M';
+    if(num >= 1000) return (num/1000).toFixed(1) + 'k';
+    return num;
+}
+
 </script>
 </body>
 </html>
