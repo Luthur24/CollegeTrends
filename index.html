@@ -1505,7 +1505,7 @@ function renderPostCard(post) {
     const mediaHtml = post.media_url
         ? (post.media_type === 'video'
             ? `<div class="video-container" onclick="toggleVideoPlayback(this)" data-playing="false" style="border-radius: 12px; overflow: hidden;">
-                <video class="post-media" src="${esc(post.media_url)}" loop playsinline muted preload="metadata" onloadedmetadata="this.currentTime=0.07" ontimeupdate="updateVideoProgress(this)"><div class="play-overlay"><div class="play-btn"></div></div><div class="video-controls" onclick="event.stopPropagation()"><div class="video-progress" onclick="seekVideo(event, this)"></div></div><button class="mute-btn" onclick="event.stopPropagation(); toggleMute(this)" title="Toggle mute">🔇</button></div>`: `<img class="post-media" src="${esc(post.media_url)}" loading="lazy" onclick="openPost(${post.id})" style="border-radius: 12px;">`): '';
+                <video class="post-media" src="${esc(post.media_url)}" loop playsinline muted preload="metadata" onloadedmetadata="this.currentTime=0.07" ontimeupdate="updateVideoProgress(this)"></video><div class="play-overlay"><div class="play-btn"></div></div><div class="video-controls" onclick="event.stopPropagation()"><div class="video-progress" onclick="seekVideo(event, this)"></div></div><button class="mute-btn" onclick="event.stopPropagation(); toggleMute(this)" title="Toggle mute">🔇</button></div>`: `<img class="post-media" src="${esc(post.media_url)}" loading="lazy" onclick="openPost(${post.id})" style="border-radius: 12px;">`): '';
 
     const commentPreview = post.latest_comment
         ? `<div class="post-comments-preview" onclick="openPost(${post.id})"><strong>${esc(post.latest_comment.username)}</strong> ${esc(post.latest_comment.text)}</div>`
